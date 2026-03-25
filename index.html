@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cher Digital Analytics | Salon Marketing That Fills Your Books</title>
+<meta name="description" content="Salon marketing built for beauty businesses that are done being invisible online. Local SEO, Google ads, and real strategy for hair salons, nail studios and spas.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap');
+
+:root {
+  --rosy:   #C49797;
+  --cord:   #834A49;
+  --olive:  #3D4436;
+  --black:  #1B1B1D;
+  --ivory:  #F8F6E3;
+  --cord-light: rgba(131,74,73,0.1);
+  --olive-light: rgba(61,68,54,0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--ivory); color: var(--black); }
+
+/* ── NAV ── */
+.nav {
+  background: var(--olive);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 36px; height: 56px;
+  position: sticky; top: 0; z-index: 100;
+}
+.nav-logo {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 16px; font-style: italic;
+  color: var(--ivory); letter-spacing: 0.08em;
+}
+.nav-links { display: flex; gap: 26px; align-items: center; }
+.nav-links a {
+  font-size: 11px; color: rgba(248,246,227,0.52);
+  text-decoration: none; letter-spacing: 0.04em; transition: color 0.15s;
+}
+.nav-links a:hover { color: var(--ivory); }
+.nav-cta {
+  font-size: 11px; font-weight: 500;
+  color: var(--olive) !important;
+  background: var(--ivory); padding: 7px 18px;
+  border-radius: 30px; transition: all 0.2s !important;
+}
+.nav-cta:hover { background: var(--rosy) !important; color: var(--ivory) !important; transform: translateY(-1px); }
+
+/* ── TICKER ── */
+.ticker-wrap { background: var(--cord); overflow: hidden; white-space: nowrap; padding: 8px 0; }
+.ticker-inner {
+  display: inline-block; animation: tick 26s linear infinite;
+  font-size: 10px; font-weight: 500;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: rgba(248,246,227,0.9);
+}
+@keyframes tick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ── HERO ── */
+.hero {
+  background: var(--olive);
+  padding: 72px 48px 68px;
+  position: relative; overflow: hidden;
+}
+.hero-circle-1 {
+  position: absolute; top: -80px; right: -80px;
+  width: 360px; height: 360px; border-radius: 50%;
+  background: rgba(196,151,151,0.07); pointer-events: none;
+}
+.hero-circle-2 {
+  position: absolute; bottom: -50px; left: 25%;
+  width: 200px; height: 200px; border-radius: 50%;
+  background: rgba(131,74,73,0.06); pointer-events: none;
+}
+.hero-inner { max-width: 660px; position: relative; z-index: 1; }
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 10px; font-weight: 500; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--rosy); margin-bottom: 22px;
+}
+.eyebrow-dash { width: 28px; height: 0.5px; background: var(--rosy); }
+.hero h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 52px; font-weight: 400;
+  color: var(--ivory); line-height: 1.1;
+  margin-bottom: 24px; letter-spacing: -0.01em;
+}
+.hero h1 em { font-style: italic; color: var(--rosy); }
+.hero h1 .hero-accent { display: block; font-style: italic; color: #C49797; opacity: 0.85; }
+.hero-sub {
+  font-size: 15px; color: rgba(248,246,227,0.58);
+  line-height: 1.9; margin-bottom: 36px; max-width: 500px;
+}
+.hero-sub strong { color: var(--ivory); font-weight: 500; }
+.cta-group { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
+.btn-hero {
+  display: inline-flex; align-items: center; gap: 12px;
+  background: var(--cord); color: var(--ivory);
+  font-size: 14px; font-weight: 500;
+  padding: 15px 28px; border-radius: 50px;
+  border: none; cursor: pointer; font-family: inherit;
+  transition: all 0.2s; text-decoration: none; letter-spacing: 0.01em;
+}
+.btn-hero:hover { background: #6e3c3b; transform: translateY(-2px); }
+.btn-arr {
+  width: 28px; height: 28px; background: rgba(248,246,227,0.18);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  transition: transform 0.2s;
+}
+.btn-hero:hover .btn-arr { transform: translateX(4px); }
+.btn-arr svg { width: 12px; height: 12px; fill: none; stroke: var(--ivory); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.hero-reassure { font-size: 11px; color: rgba(248,246,227,0.28); letter-spacing: 0.03em; }
+
+.hero-pills { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 44px; padding-top: 28px; border-top: 0.5px solid rgba(248,246,227,0.08); }
+.hero-pill {
+  display: flex; align-items: center; gap: 7px;
+  background: rgba(248,246,227,0.05);
+  border: 0.5px solid rgba(248,246,227,0.1);
+  border-radius: 8px; padding: 9px 13px;
+}
+.pill-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+.hero-pill span { font-size: 11px; color: rgba(248,246,227,0.5); line-height: 1.4; }
+
+/* ── MANIFESTO ── */
+.manifesto { background: var(--cord); padding: 36px 48px; text-align: center; }
+.manifesto p {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 20px; font-weight: 400; font-style: italic;
+  color: var(--ivory); line-height: 1.65; max-width: 680px; margin: 0 auto;
+}
+.manifesto p strong { font-style: normal; font-weight: 500; color: #f0d4c8; }
+
+/* ── WHAT WE DO ── */
+.what-section { padding: 72px 48px; background: var(--ivory); }
+.s-eyebrow {
+  font-size: 10px; font-weight: 500; letter-spacing: 0.18em;
+  text-transform: uppercase; color: #9B8E82; margin-bottom: 14px;
+  display: flex; align-items: center; gap: 10px;
+}
+.s-eyebrow::after { content: ''; width: 32px; height: 0.5px; background: #9B8E82; }
+.what-section h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 36px; font-weight: 400; color: var(--black);
+  line-height: 1.2; margin-bottom: 16px;
+}
+.what-section h2 em { font-style: italic; color: var(--cord); }
+.what-section .lead {
+  font-size: 14px; color: #6B6054; line-height: 1.9;
+  max-width: 560px; margin-bottom: 48px;
+}
+.what-section .lead strong { color: var(--black); font-weight: 500; }
+.features-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; margin-bottom: 40px; }
+.feat-card {
+  background: #FDFAF4; border: 0.5px solid rgba(27,27,29,0.08);
+  border-radius: 16px; padding: 28px 24px;
+  transition: transform 0.2s; position: relative; overflow: hidden;
+}
+.feat-card::before {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; height: 3px; border-radius: 16px 16px 0 0;
+}
+.feat-card.c1::before { background: var(--cord); }
+.feat-card.c2::before { background: var(--olive); }
+.feat-card.c3::before { background: var(--rosy); }
+.feat-card:hover { transform: translateY(-3px); }
+.feat-num {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 40px; font-weight: 400; font-style: italic;
+  color: rgba(27,27,29,0.06); line-height: 1; margin-bottom: 14px;
+}
+.feat-card h3 { font-size: 15px; font-weight: 500; color: var(--black); margin-bottom: 10px; }
+.feat-card p { font-size: 12.5px; color: #6B6054; line-height: 1.7; }
+.what-cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--olive); color: var(--ivory);
+  font-size: 13px; font-weight: 500; padding: 13px 26px;
+  border-radius: 50px; border: none; cursor: pointer;
+  font-family: inherit; transition: all 0.2s; text-decoration: none;
+}
+.what-cta:hover { background: #2d3228; transform: translateY(-1px); }
+
+/* ── FOR WHO ── */
+.forwho-section { background: var(--olive); padding: 72px 48px; }
+.forwho-section .s-eyebrow { color: var(--rosy); }
+.forwho-section .s-eyebrow::after { background: var(--rosy); }
+.forwho-section h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 36px; font-weight: 400; color: var(--ivory);
+  line-height: 1.25; margin-bottom: 40px;
+}
+.forwho-section h2 em { font-style: italic; color: var(--rosy); }
+.forwho-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 14px; }
+.forwho-card {
+  background: rgba(248,246,227,0.05);
+  border: 0.5px solid rgba(248,246,227,0.1);
+  border-radius: 14px; padding: 24px 20px;
+  transition: background 0.2s;
+}
+.forwho-card:hover { background: rgba(248,246,227,0.09); }
+.forwho-quote {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 15px; font-style: italic; color: var(--rosy);
+  line-height: 1.5; margin-bottom: 12px;
+}
+.forwho-response { font-size: 12px; color: rgba(248,246,227,0.52); line-height: 1.7; }
+.forwho-response strong { color: rgba(248,246,227,0.85); font-weight: 500; }
+
+/* ── PROCESS ── */
+.process-section { background: var(--ivory); padding: 72px 48px; }
+.process-section h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 34px; font-weight: 400; color: var(--black);
+  line-height: 1.25; margin-bottom: 48px;
+}
+.process-section h2 em { font-style: italic; color: var(--cord); }
+.process-steps { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 24px; }
+.process-step { display: flex; flex-direction: column; }
+.step-bubble {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--cord); display: flex;
+  align-items: center; justify-content: center;
+  margin-bottom: 16px;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 16px; font-style: italic; color: var(--ivory);
+}
+.process-step h4 { font-size: 13.5px; font-weight: 500; color: var(--black); margin-bottom: 8px; }
+.process-step p { font-size: 12px; color: #6B6054; line-height: 1.65; }
+
+/* ── PROOF ── */
+.proof-section { background: var(--cord); padding: 64px 48px; }
+.proof-section .s-eyebrow { color: rgba(248,246,227,0.5); }
+.proof-section .s-eyebrow::after { background: rgba(248,246,227,0.25); }
+.proof-section h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 32px; font-weight: 400; color: var(--ivory);
+  line-height: 1.3; margin-bottom: 10px;
+}
+.proof-section h2 em { font-style: italic; color: rgba(248,246,227,0.75); }
+.proof-sub { font-size: 13px; color: rgba(248,246,227,0.6); line-height: 1.85; margin-bottom: 36px; max-width: 520px; }
+.proof-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 14px; }
+.proof-card {
+  background: rgba(248,246,227,0.09);
+  border: 0.5px solid rgba(248,246,227,0.14);
+  border-radius: 14px; padding: 22px 20px;
+}
+.proof-num {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 36px; font-weight: 400; font-style: italic;
+  color: rgba(248,246,227,0.18); line-height: 1; margin-bottom: 10px;
+}
+.proof-card h4 { font-size: 13.5px; font-weight: 500; color: var(--ivory); margin-bottom: 8px; }
+.proof-card p { font-size: 12px; color: rgba(248,246,227,0.57); line-height: 1.65; }
+
+/* ── FAQ ── */
+.faq-section { background: var(--black); padding: 72px 48px; }
+.faq-section .s-eyebrow { color: var(--rosy); }
+.faq-section .s-eyebrow::after { background: var(--rosy); }
+.faq-section h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 34px; font-weight: 400; color: var(--ivory);
+  line-height: 1.25; margin-bottom: 36px;
+}
+.faq-section h2 em { font-style: italic; color: var(--rosy); }
+.faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.faq-item {
+  background: rgba(248,246,227,0.04);
+  border: 0.5px solid rgba(248,246,227,0.08);
+  border-radius: 12px; padding: 20px 22px; cursor: pointer;
+  transition: background 0.15s;
+}
+.faq-item:hover { background: rgba(248,246,227,0.08); }
+.faq-q {
+  font-size: 13px; font-weight: 500; color: var(--ivory);
+  margin-bottom: 9px; display: flex;
+  justify-content: space-between; align-items: flex-start; gap: 12px;
+}
+.faq-icon { color: var(--rosy); font-size: 16px; flex-shrink: 0; }
+.faq-a { font-size: 12px; color: rgba(248,246,227,0.48); line-height: 1.75; }
+
+/* ── SOCIALS — THE GOOD BIT ── */
+.socials-section { background: var(--ivory); padding: 72px 48px; }
+.socials-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+.socials-left .s-eyebrow { color: #9B8E82; }
+.socials-left .s-eyebrow::after { background: #9B8E82; }
+.socials-left h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 34px; font-weight: 400; color: var(--black);
+  line-height: 1.2; margin-bottom: 14px;
+}
+.socials-left h2 em { font-style: italic; color: var(--cord); }
+.socials-left p { font-size: 14px; color: #6B6054; line-height: 1.85; margin-bottom: 8px; }
+.socials-left .sub-note {
+  font-size: 12px; color: #9B8E82; line-height: 1.65;
+  font-style: italic; margin-bottom: 32px;
+}
+.social-cards { display: flex; flex-direction: column; gap: 10px; }
+.social-card {
+  display: flex; align-items: center; gap: 16px;
+  background: #FDFAF4; border: 0.5px solid rgba(27,27,29,0.1);
+  border-radius: 12px; padding: 16px 18px;
+  text-decoration: none; transition: all 0.2s; cursor: pointer;
+}
+.social-card:hover { transform: translateX(6px); border-color: var(--cord); }
+.social-icon {
+  width: 42px; height: 42px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.social-icon svg { width: 20px; height: 20px; fill: var(--ivory); }
+.social-card-text { flex: 1; }
+.social-card-name { font-size: 13px; font-weight: 500; color: var(--black); margin-bottom: 2px; }
+.social-card-desc { font-size: 11.5px; color: #9B8E82; line-height: 1.4; }
+.social-card-arrow { font-size: 16px; color: rgba(27,27,29,0.2); transition: color 0.2s; }
+.social-card:hover .social-card-arrow { color: var(--cord); }
+
+.socials-right {
+  background: var(--olive); border-radius: 20px;
+  padding: 36px 32px; display: flex; flex-direction: column; gap: 20px;
+}
+.socials-right-label {
+  font-size: 10px; font-weight: 500; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--rosy); margin-bottom: 4px;
+}
+.social-preview-quote {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 18px; font-style: italic; font-weight: 400;
+  color: var(--ivory); line-height: 1.5;
+}
+.social-preview-sub { font-size: 12px; color: rgba(248,246,227,0.45); line-height: 1.6; }
+.social-preview-pills { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px; }
+.social-preview-pill {
+  font-size: 10px; color: rgba(248,246,227,0.5);
+  background: rgba(248,246,227,0.07);
+  border: 0.5px solid rgba(248,246,227,0.12);
+  border-radius: 20px; padding: 4px 12px;
+}
+
+/* ── CONTACT ── */
+.contact-section { background: var(--olive); padding: 80px 48px; }
+.contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+.contact-left .s-eyebrow { color: var(--rosy); }
+.contact-left .s-eyebrow::after { background: var(--rosy); }
+.contact-left h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 36px; font-weight: 400; color: var(--ivory);
+  line-height: 1.2; margin-bottom: 16px;
+}
+.contact-left h2 em { font-style: italic; color: var(--rosy); }
+.contact-left p { font-size: 14px; color: rgba(248,246,227,0.58); line-height: 1.85; margin-bottom: 28px; }
+.contact-left p strong { color: var(--ivory); font-weight: 500; }
+.btn-contact {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--cord); color: var(--ivory);
+  font-size: 14px; font-weight: 500;
+  padding: 15px 28px; border-radius: 50px;
+  border: none; cursor: pointer; font-family: inherit;
+  transition: all 0.2s; text-decoration: none;
+}
+.btn-contact:hover { background: #6e3c3b; transform: translateY(-2px); }
+.contact-reassure { font-size: 11px; color: rgba(248,246,227,0.28); margin-top: 12px; }
+.contact-right { display: flex; flex-direction: column; gap: 12px; }
+.contact-card {
+  background: rgba(248,246,227,0.06);
+  border: 0.5px solid rgba(248,246,227,0.1);
+  border-radius: 14px; padding: 18px 20px;
+  display: flex; gap: 14px; align-items: flex-start;
+}
+.contact-card svg { width: 20px; height: 20px; fill: none; stroke: var(--rosy); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; margin-top: 1px; }
+.cc-label { font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(248,246,227,0.3); margin-bottom: 4px; }
+.cc-val { font-size: 13px; color: rgba(248,246,227,0.72); line-height: 1.5; }
+
+/* ── FOOTER ── */
+.footer { background: var(--black); padding: 44px 48px 28px; }
+.footer-top { display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 40px; margin-bottom: 32px; }
+.footer-logo {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 17px; font-style: italic;
+  color: var(--ivory); margin-bottom: 10px; letter-spacing: 0.05em;
+}
+.footer-brand p { font-size: 12px; color: rgba(248,246,227,0.32); line-height: 1.75; max-width: 220px; }
+.footer-col-label { font-size: 10px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(248,246,227,0.28); margin-bottom: 14px; }
+.footer-link { font-size: 12px; color: rgba(248,246,227,0.42); display: block; margin-bottom: 9px; text-decoration: none; transition: color 0.15s; }
+.footer-link:hover { color: var(--rosy); }
+.footer-contact-item { font-size: 12px; color: rgba(248,246,227,0.42); margin-bottom: 9px; }
+.footer-bottom { border-top: 0.5px solid rgba(248,246,227,0.07); padding-top: 22px; display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+.footer-bottom p { font-size: 11px; color: rgba(248,246,227,0.18); line-height: 1.6; }
+.footer-privacy { font-size: 11px; color: rgba(248,246,227,0.22); text-decoration: none; transition: color 0.15s; white-space: nowrap; }
+.footer-privacy:hover { color: var(--rosy); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .hero { padding: 48px 24px; }
+  .hero h1 { font-size: 36px; }
+  .features-grid, .forwho-grid, .process-steps, .proof-grid, .faq-grid, .socials-inner, .contact-inner { grid-template-columns: 1fr; }
+  .what-section, .forwho-section, .process-section, .proof-section, .faq-section, .socials-section, .contact-section { padding: 52px 24px; }
+  .manifesto { padding: 30px 24px; }
+  .manifesto p { font-size: 16px; }
+  .footer-top { grid-template-columns: 1fr; }
+  .footer { padding: 36px 24px 24px; }
+  .nav-links { display: none; }
+  .process-steps { grid-template-columns: 1fr 1fr; gap: 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">Cher</div>
+  <div class="nav-links">
+    <a href="#">What we do</a>
+    <a href="#">About us</a>
+    <a href="#">Packages</a>
+    <a href="#">Blogs</a>
+    <a href="#">FAQ</a>
+    <a href="#" class="nav-cta">Free salon audit</a>
+  </div>
+</nav>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <span class="ticker-inner">
+    Hair Salons &nbsp;·&nbsp; Nail Studios &nbsp;·&nbsp; Med Spas &nbsp;·&nbsp; Blow Dry Bars &nbsp;·&nbsp; Lash Studios &nbsp;·&nbsp; Skincare Clinics &nbsp;·&nbsp; Brow Bars &nbsp;·&nbsp; Beauty Suites &nbsp;·&nbsp; Wax Studios &nbsp;·&nbsp; Barbershops &nbsp;&nbsp;&nbsp;&nbsp;
+    Hair Salons &nbsp;·&nbsp; Nail Studios &nbsp;·&nbsp; Med Spas &nbsp;·&nbsp; Blow Dry Bars &nbsp;·&nbsp; Lash Studios &nbsp;·&nbsp; Skincare Clinics &nbsp;·&nbsp; Brow Bars &nbsp;·&nbsp; Beauty Suites &nbsp;·&nbsp; Wax Studios &nbsp;·&nbsp; Barbershops &nbsp;&nbsp;&nbsp;&nbsp;
+  </span>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-circle-1"></div>
+  <div class="hero-circle-2"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow"><span class="eyebrow-dash"></span>Salon Marketing Specialists</div>
+    <h1>
+      More Bookings.<br>
+      <em>Less Guessing.</em><br>
+      <span class="hero-accent">Marketing Built for Salons.</span>
+    </h1>
+    <p class="hero-sub">
+      You didn't build your salon to spend your evenings fighting Google algorithms. <strong>We handle all of that</strong> — the SEO, the ads, the analytics — so you can stay behind the chair, not behind a screen. The Cher team reads every report and walks you through it personally, every single month.
+    </p>
+    <div class="cta-group">
+      <a href="#" class="btn-hero">
+        Get My Free Cher Salon Audit PDF
+        <span class="btn-arr"><svg viewBox="0 0 12 12"><path d="M2 6h8M6 2l4 4-4 4"/></svg></span>
+      </a>
+      <span class="hero-reassure">30 seconds to submit &nbsp;·&nbsp; Free PDF to your inbox &nbsp;·&nbsp; Zero obligation</span>
+    </div>
+    <div class="hero-pills">
+      <div class="hero-pill"><div class="pill-dot" style="background:var(--rosy)"></div><span>Month-to-month · cancel anytime</span></div>
+      <div class="hero-pill"><div class="pill-dot" style="background:var(--cord)"></div><span>No hidden fees, ever</span></div>
+      <div class="hero-pill"><div class="pill-dot" style="background:#A0956A"></div><span>Real people reading your reports — not bots</span></div>
+      <div class="hero-pill"><div class="pill-dot" style="background:var(--rosy)"></div><span>Beauty businesses only — deep focus, always</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- MANIFESTO -->
+<div class="manifesto">
+  <p>"The best salon in town shouldn't be the hardest one to find. <strong>That's exactly the problem we exist to fix.</strong>"</p>
+</div>
+
+<!-- WHAT WE DO -->
+<section class="what-section">
+  <div class="s-eyebrow">What we do · Salon Marketing Services</div>
+  <h2>We Turn Your Google Presence<br>Into a <em>Booking Machine</em></h2>
+  <p class="lead">Most salons are invisible on Google — and don't even know it. We fix your local SEO, run your ads, and send you a <strong>plain-language monthly report</strong> that actually makes sense. No jargon. No lock-in. Just more of the right clients finding you first.</p>
+  <div class="features-grid">
+    <div class="feat-card c1">
+      <div class="feat-num">01</div>
+      <h3>You'll Always Know What's Working</h3>
+      <p>One clean dashboard shows your traffic, bookings, and ad performance. Check it in five minutes. We'll walk you through it every month — no guesswork, no confusion.</p>
+    </div>
+    <div class="feat-card c2">
+      <div class="feat-num">02</div>
+      <h3>No Surprises. No Small Print. No Drama.</h3>
+      <p>Month-to-month billing. Cancel anytime, no penalty. Know exactly what you're paying for before you sign anything. We earn your business every month — or you walk.</p>
+    </div>
+    <div class="feat-card c3">
+      <div class="feat-num">03</div>
+      <h3>A Real Person Who Gets Your World</h3>
+      <p>When you reach out, you'll talk to someone who already knows your goals, your numbers, and your local market. Not a stranger reading from a script. Not a chatbot.</p>
+    </div>
+  </div>
+  <a href="#" class="what-cta">See what's in each plan →</a>
+</section>
+
+<!-- FOR WHO -->
+<section class="forwho-section">
+  <div class="s-eyebrow">Sound familiar?</div>
+  <h2>If You've Said Any of These,<br><em>We Built This for You</em></h2>
+  <div class="forwho-grid">
+    <div class="forwho-card">
+      <div class="forwho-quote">"I Googled my salon and I'm not even on the map."</div>
+      <div class="forwho-response"><strong>We hear this every week.</strong> Your Google Business Profile is probably incomplete and your competitors got there first. Fixable — fast.</div>
+    </div>
+    <div class="forwho-card">
+      <div class="forwho-quote">"People visit my website. Nobody books."</div>
+      <div class="forwho-response"><strong>That's a conversion problem, not a traffic problem.</strong> We audit exactly where you're losing people and fix it — booking button, page speed, copy.</div>
+    </div>
+    <div class="forwho-card">
+      <div class="forwho-quote">"I'm spending on ads but have no idea if they're working."</div>
+      <div class="forwho-response"><strong>You deserve to know exactly where every dollar goes.</strong> We set up tracking so you can see which ad filled which chair — explained in plain English.</div>
+    </div>
+    <div class="forwho-card">
+      <div class="forwho-quote">"Marketing feels like a full-time job I didn't sign up for."</div>
+      <div class="forwho-response"><strong>Because it is — and it's not your job.</strong> You became a stylist, a nail tech, a spa owner. You didn't sign up to be a Google expert on top of everything else.</div>
+    </div>
+    <div class="forwho-card">
+      <div class="forwho-quote">"The salon down the road is worse but always fully booked."</div>
+      <div class="forwho-response"><strong>They're just louder online.</strong> Visibility isn't about who's best yet — it's about who shows up first. We fix that so the best salon is also the most found one.</div>
+    </div>
+    <div class="forwho-card">
+      <div class="forwho-quote">"I want to grow but I don't know where to start."</div>
+      <div class="forwho-response"><strong>Start with the free audit.</strong> We'll show you exactly where your biggest gaps are and which plan — if any — makes sense for where you are right now.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process-section">
+  <div class="s-eyebrow">How it works</div>
+  <h2>From Sign-Up to More Bookings —<br><em>Here's What Actually Happens</em></h2>
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="step-bubble">1</div>
+      <h4>We audit what you have</h4>
+      <p>Google Business Profile, local rankings, your website, your competitors. You'll see exactly where you stand before we change a single thing.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-bubble">2</div>
+      <h4>We build your visibility system</h4>
+      <p>Ads set up, SEO cleaned up, analytics connected and making sense. Most clients are live within 7–10 days.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-bubble">3</div>
+      <h4>Your monthly report lands</h4>
+      <p>Written by a real member of the Cher team — in plain English, for your specific salon. Not a template. Not auto-generated at 3am.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-bubble">4</div>
+      <h4>We walk you through it</h4>
+      <p>End-of-month call — what worked, what didn't, what's next. You leave actually understanding your business numbers.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF -->
+<section class="proof-section">
+  <div class="s-eyebrow">The Cher difference</div>
+  <h2>No Bots. No Auto-Reports.<br><em>No "Just Check the Dashboard."</em></h2>
+  <p class="proof-sub">Every month a real member of the Cher team sits down with your numbers, writes your report, and walks you through it on a call. You leave knowing exactly what's working — and feeling good about it.</p>
+  <div class="proof-grid">
+    <div class="proof-card">
+      <div class="proof-num">01</div>
+      <h4>We review your month</h4>
+      <p>Every metric — traffic, bookings, ad performance, local rankings — reviewed line by line by a real person who knows your account.</p>
+    </div>
+    <div class="proof-card">
+      <div class="proof-num">02</div>
+      <h4>We write your report</h4>
+      <p>Plain English. No jargon. Written for your salon specifically — not a template with your name pasted in at the top.</p>
+    </div>
+    <div class="proof-card">
+      <div class="proof-num">03</div>
+      <h4>We walk you through it</h4>
+      <p>Monthly call — what happened, what it means for your bookings, and what we're doing next. Clarity, every time.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="s-eyebrow">Questions we get asked</div>
+  <h2>Everything You Wanted to Ask<br><em>But Were Too Busy to Google</em></h2>
+  <div class="faq-grid">
+    <div class="faq-item">
+      <div class="faq-q">Why isn't my salon showing up on Google? <span class="faq-icon">✦</span></div>
+      <div class="faq-a">Usually it's three things — your Google Business Profile is incomplete, your website doesn't use the right local keywords, or you don't have enough reviews to outrank competitors. We fix all three.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Do I need to know anything about marketing? <span class="faq-icon">✦</span></div>
+      <div class="faq-a">Not a single thing. You tell us your goals, we take it from there. Most of our clients have never run a Google Ad in their lives — that's literally why we exist.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How quickly will I see results? <span class="faq-icon">✦</span></div>
+      <div class="faq-a">Ads can drive traffic within the first week. SEO takes 60–90 days to build real momentum. Most clients see a meaningful jump in bookings within their first 2–3 months.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Will I actually understand the reports? <span class="faq-icon">✦</span></div>
+      <div class="faq-a">Yes — that's the whole point. We write them in plain English and walk you through them on a call every month. If something doesn't make sense, you ask and we explain until it does.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Am I locked into a contract? <span class="faq-icon">✦</span></div>
+      <div class="faq-a">Never. Everything is month-to-month. If it's not working, you cancel — no penalty, no 30-day notice, no invoice for the rest of the year. We don't believe in trapping people.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What's the free audit actually like? <span class="faq-icon">✦</span></div>
+      <div class="faq-a">A PDF that breaks down your Google presence, local visibility, and website. We show you exactly what's costing you bookings and give you 3 quick wins — whether you work with us or not.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIALS — REDESIGNED -->
+<section class="socials-section">
+  <div class="socials-inner">
+    <div class="socials-left">
+      <div class="s-eyebrow">Follow along</div>
+      <h2>We Promise We're More<br>Than <em>Spreadsheets</em></h2>
+      <p>Stalk us on our socials — real salon marketing wins, behind-the-scenes tips, and content that actually helps you grow. We show up, we post the good stuff, and yes we're a lot more fun than our analytics.</p>
+      <p class="sub-note">Find us on Instagram, LinkedIn, and Pinterest — come say hi.</p>
+      <div class="social-cards">
+        <a href="https://instagram.com" target="_blank" class="social-card">
+          <div class="social-icon" style="background:var(--cord);">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </div>
+          <div class="social-card-text">
+            <div class="social-card-name">Instagram</div>
+            <div class="social-card-desc">Behind-the-scenes, marketing tips & salon wins</div>
+          </div>
+          <div class="social-card-arrow">→</div>
+        </a>
+        <a href="https://linkedin.com/company/cherdigitalanalytics" target="_blank" class="social-card">
+          <div class="social-icon" style="background:var(--olive);">
+            <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </div>
+          <div class="social-card-text">
+            <div class="social-card-name">LinkedIn</div>
+            <div class="social-card-desc">Strategy, insights & the business side of beauty</div>
+          </div>
+          <div class="social-card-arrow">→</div>
+        </a>
+        <a href="https://pinterest.com" target="_blank" class="social-card">
+          <div class="social-icon" style="background:var(--rosy);">
+            <svg viewBox="0 0 24 24" fill="var(--ivory)"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 01.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+          </div>
+          <div class="social-card-text">
+            <div class="social-card-name">Pinterest</div>
+            <div class="social-card-desc">Salon inspo, marketing ideas & mood boards</div>
+          </div>
+          <div class="social-card-arrow">→</div>
+        </a>
+      </div>
+    </div>
+    <div class="socials-right">
+      <div class="socials-right-label">What you'll find when you follow us</div>
+      <div class="social-preview-quote">"Why your salon's Google profile is quietly costing you bookings every single day."</div>
+      <div class="social-preview-sub">The kind of tips we post — specific, actionable, and written for real salon owners who have 3 minutes, not 3 hours.</div>
+      <div class="social-preview-pills">
+        <span class="social-preview-pill">Salon SEO tips</span>
+        <span class="social-preview-pill">Ad strategy</span>
+        <span class="social-preview-pill">Google wins</span>
+        <span class="social-preview-pill">Real results</span>
+        <span class="social-preview-pill">Behind the scenes</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section">
+  <div class="contact-inner">
+    <div class="contact-left">
+      <div class="s-eyebrow">Ready when you are</div>
+      <h2>Let's Get Your Salon<br><em>The Attention It Deserves</em></h2>
+      <p>Start with the free Cher Salon Audit PDF. We'll show you <strong>exactly what's holding back your bookings</strong> and what we'd do about it — delivered to your inbox, no call required, no commitment attached.</p>
+      <a href="#" class="btn-contact">Get my free audit PDF →</a>
+      <div class="contact-reassure">Free · Delivered within 48 hours · No pitch. Just honest feedback.</div>
+    </div>
+    <div class="contact-right">
+      <div class="contact-card">
+        <svg viewBox="0 0 20 20"><path d="M2 4l8 7 8-7M2 4h16v12a2 2 0 01-2 2H4a2 2 0 01-2-2V4z"/></svg>
+        <div><div class="cc-label">Email us</div><div class="cc-val">hello@cherdigitalanalytics.com</div></div>
+      </div>
+      <div class="contact-card">
+        <svg viewBox="0 0 20 20"><path d="M3 4a1 1 0 011-1h2.5l1 3-1.5 1.5a11 11 0 005.5 5.5L13 11.5l3 1V15a1 1 0 01-1 1C7.163 16 3 11.837 3 7V4z"/></svg>
+        <div><div class="cc-label">Call us</div><div class="cc-val">(413) 377-8945</div></div>
+      </div>
+      <div class="contact-card">
+        <svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="8"/><path d="M10 6v4l3 3"/></svg>
+        <div><div class="cc-label">Monthly call — every client</div><div class="cc-val">We walk you through your report at end of every month. No ghosting. No "just check the dashboard."</div></div>
+      </div>
+      <div class="contact-card">
+        <svg viewBox="0 0 20 20"><path d="M10 2l2.4 4.8 5.3.8-3.85 3.75.91 5.3L10 14.1l-4.76 2.55.91-5.3L2.3 7.6l5.3-.8z"/></svg>
+        <div><div class="cc-label">Our promise</div><div class="cc-val">Month-to-month · no lock-in · no hidden fees · real people every time</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo">Cher Digital Analytics</div>
+      <p>Helping salon owners fill their books — without the marketing overwhelm.</p>
+    </div>
+    <div>
+      <div class="footer-col-label">Quick links</div>
+      <a class="footer-link" href="#">What we do</a>
+      <a class="footer-link" href="#">About us</a>
+      <a class="footer-link" href="#">Packages</a>
+      <a class="footer-link" href="#">Blogs</a>
+      <a class="footer-link" href="#">FAQ</a>
+      <a class="footer-link" href="#">Work with us</a>
+    </div>
+    <div>
+      <div class="footer-col-label">Get in touch</div>
+      <div class="footer-contact-item">(413) 377-8945</div>
+      <div class="footer-contact-item">hello@cherdigitalanalytics.com</div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Cher Digital Analytics. Built for salon owners who are done being invisible online.</p>
+    <a class="footer-privacy" href="#">Privacy policy</a>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Salon Marketing Packages | Cher Digital Analytics</title>
+<meta name="description" content="Done-for-you Google, SEO, and ad management built for hair salons, nail salons, and spas. Transparent pricing. No long-term contracts.">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #F5F0E8; }
+
+.nav { background: #3A3C2C; display: flex; align-items: center; justify-content: space-between; padding: 0 28px; height: 52px; position: sticky; top: 0; z-index: 100; }
+.nav-logo { font-family: Georgia, serif; font-size: 15px; color: #F2EDE0; letter-spacing: 0.06em; font-weight: 400; }
+.nav-links { display: flex; gap: 20px; align-items: center; }
+.nav-links a { font-size: 11px; color: rgba(242,237,224,0.55); text-decoration: none; letter-spacing: 0.04em; cursor: pointer; transition: color 0.15s; }
+.nav-links a:hover { color: #F2EDE0; }
+.nav-links a.active { color: #F2EDE0; }
+.nav-cta { font-size: 11px; font-weight: 500; color: #3A3C2C !important; background: #F2EDE0; padding: 6px 14px; border-radius: 4px; cursor: pointer; transition: background 0.15s !important; }
+.nav-cta:hover { background: #e4ddd0 !important; }
+
+.page-header { background: #3A3C2C; padding: 52px 28px 48px; text-align: center; }
+.page-header .eyebrow { font-size: 10px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: #A0956A; margin-bottom: 14px; }
+.page-header h1 { font-family: Georgia, serif; font-size: 32px; font-weight: 400; color: #F2EDE0; line-height: 1.25; margin-bottom: 14px; letter-spacing: -0.01em; }
+.page-header h1 em { font-style: italic; color: #C4A882; }
+.page-header .sub { font-size: 13px; color: rgba(242,237,224,0.6); line-height: 1.75; margin-bottom: 22px; }
+.page-header .sub a { color: #C4A882; text-decoration: underline; cursor: pointer; }
+.trust-row { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
+.trust-pill { font-size: 10px; color: rgba(242,237,224,0.45); background: rgba(242,237,224,0.07); border: 0.5px solid rgba(242,237,224,0.15); border-radius: 20px; padding: 4px 12px; }
+
+.tiers-section { padding: 32px 20px 0; background: #F5F0E8; }
+.tiers-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; align-items: start; }
+
+.pkg-card { background: #FDFAF4; border: 0.5px solid rgba(58,60,44,0.15); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.15s; }
+.pkg-card:hover { transform: translateY(-2px); }
+.pkg-card.featured { border: 2px solid #3A3C2C; }
+.featured-bar { background: #3A3C2C; padding: 8px 16px; display: flex; align-items: center; justify-content: space-between; }
+.featured-bar span { font-size: 10px; font-weight: 500; color: #F2EDE0; letter-spacing: 0.08em; text-transform: uppercase; }
+.featured-bar .rec { color: #C4A882; font-size: 10px; }
+
+.card-top { padding: 20px 18px 16px; border-bottom: 0.5px solid rgba(58,60,44,0.08); }
+.card-tier-label { font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #9B9080; margin-bottom: 8px; }
+.card-name { font-family: Georgia, serif; font-size: 18px; font-weight: 400; color: #2C2A20; line-height: 1.2; margin-bottom: 8px; }
+.card-tagline { font-size: 12px; color: #7A7060; line-height: 1.55; margin-bottom: 14px; font-style: italic; }
+.price-row { display: flex; align-items: baseline; gap: 4px; }
+.price-num { font-family: Georgia, serif; font-size: 28px; font-weight: 400; color: #2C2A20; }
+.price-per { font-size: 12px; color: #9B9080; }
+
+.card-features { padding: 16px 18px; flex: 1; border-bottom: 0.5px solid rgba(58,60,44,0.08); }
+.feature-item { display: flex; gap: 8px; align-items: flex-start; margin-bottom: 9px; font-size: 11.5px; color: #5C5448; line-height: 1.45; }
+.feature-item:last-child { margin-bottom: 0; }
+.feat-dot { width: 5px; height: 5px; border-radius: 50%; background: #A0614A; margin-top: 4px; flex-shrink: 0; }
+.feat-dot.green { background: #1D9E75; }
+.feature-item.inherit { color: #9B9080; font-style: italic; }
+.feature-item.inherit .feat-dot { background: #C4B8A8; }
+
+.card-nudge { padding: 12px 18px; background: rgba(58,60,44,0.04); border-bottom: 0.5px solid rgba(58,60,44,0.08); }
+.nudge-text { font-size: 11.5px; color: #5C5448; line-height: 1.6; font-style: italic; }
+
+.card-bestfor { padding: 12px 18px; border-bottom: 0.5px solid rgba(58,60,44,0.08); }
+.bestfor-label { font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #9B9080; margin-bottom: 4px; }
+.bestfor-text { font-size: 11px; color: #7A7060; line-height: 1.5; }
+
+.card-addons { padding: 10px 18px; border-bottom: 0.5px solid rgba(58,60,44,0.08); }
+.addon-label { font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #9B9080; margin-bottom: 5px; }
+.addon-item { font-size: 11px; color: #7A7060; display: flex; justify-content: space-between; padding: 2px 0; line-height: 1.5; }
+.addon-price { font-weight: 500; color: #5C5448; }
+
+.card-cta { padding: 16px 18px; }
+.cta-btn { width: 100%; padding: 11px 16px; border-radius: 6px; font-size: 13px; font-weight: 500; cursor: pointer; font-family: inherit; transition: all 0.15s; text-align: center; display: block; border: none; }
+.cta-btn.primary { background: #3A3C2C; color: #F2EDE0; }
+.cta-btn.primary:hover { background: #2a2c1f; }
+.cta-btn.outline { background: transparent; color: #3A3C2C; border: 1px solid rgba(58,60,44,0.3); }
+.cta-btn.outline:hover { background: rgba(58,60,44,0.05); }
+.cta-reassure { font-size: 10px; color: #9B9080; text-align: center; margin-top: 6px; }
+
+.human-banner { margin: 28px 20px 0; background: #A0614A; border-radius: 12px; padding: 24px 28px; }
+.human-banner-top { display: flex; align-items: flex-start; gap: 18px; margin-bottom: 16px; }
+.human-icon { width: 46px; height: 46px; border-radius: 50%; background: rgba(242,237,224,0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.human-icon svg { width: 22px; height: 22px; fill: none; stroke: #F2EDE0; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.human-text h4 { font-family: Georgia, serif; font-size: 16px; font-weight: 400; color: #F2EDE0; line-height: 1.35; margin-bottom: 6px; }
+.human-text h4 em { font-style: italic; color: rgba(242,237,224,0.8); }
+.human-text p { font-size: 12px; color: rgba(242,237,224,0.6); line-height: 1.7; }
+.human-steps { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 10px; border-top: 0.5px solid rgba(242,237,224,0.15); padding-top: 16px; }
+.human-step .step-num { font-family: Georgia, serif; font-size: 20px; color: rgba(242,237,224,0.25); line-height: 1; margin-bottom: 4px; }
+.human-step .step-title { font-size: 11.5px; font-weight: 500; color: #F2EDE0; line-height: 1.3; margin-bottom: 3px; }
+.human-step .step-desc { font-size: 11px; color: rgba(242,237,224,0.5); line-height: 1.5; }
+
+.audit-banner { margin: 16px 20px 0; background: #FDFAF4; border: 1.5px solid #3A3C2C; border-radius: 12px; padding: 22px 24px; display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: center; }
+.audit-left .audit-eyebrow { font-size: 10px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #9B9080; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+.pdf-badge { background: #A0614A; color: #F2EDE0; font-size: 9px; font-weight: 500; padding: 2px 7px; border-radius: 4px; letter-spacing: 0.06em; }
+.audit-left h3 { font-family: Georgia, serif; font-size: 17px; font-weight: 400; color: #2C2A20; line-height: 1.3; margin-bottom: 8px; }
+.audit-left h3 em { font-style: italic; color: #A0614A; }
+.audit-left p { font-size: 12px; color: #7A7060; line-height: 1.65; }
+.audit-what { display: flex; flex-direction: column; gap: 5px; margin-top: 12px; }
+.audit-point { display: flex; align-items: flex-start; gap: 8px; font-size: 11px; color: #5C5448; line-height: 1.45; }
+.audit-point::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: #3A3C2C; margin-top: 4px; flex-shrink: 0; }
+.audit-right { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.pdf-mockup { width: 80px; background: #3A3C2C; border-radius: 6px; padding: 10px 8px 8px; display: flex; flex-direction: column; gap: 5px; }
+.pdf-top-bar { display: flex; align-items: center; gap: 4px; }
+.pdf-dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(242,237,224,0.2); }
+.pdf-lines { display: flex; flex-direction: column; gap: 3px; margin-top: 3px; }
+.pdf-line { height: 3px; background: rgba(242,237,224,0.15); border-radius: 2px; }
+.pdf-line.accent { background: #A0956A; width: 60%; }
+.pdf-line.short { width: 70%; }
+.pdf-label { font-size: 9px; font-weight: 500; color: #F2EDE0; text-align: center; letter-spacing: 0.04em; margin-top: 4px; }
+.audit-cta-btn { background: #3A3C2C; color: #F2EDE0; font-size: 12px; font-weight: 500; padding: 9px 16px; border-radius: 6px; border: none; cursor: pointer; font-family: inherit; white-space: nowrap; transition: background 0.15s; text-align: center; }
+.audit-cta-btn:hover { background: #2a2c1f; }
+.audit-sub { font-size: 10px; color: #9B9080; text-align: center; }
+
+.custom-section { padding: 16px 20px 0; }
+.custom-card { background: #3A3C2C; border-radius: 14px; overflow: hidden; display: grid; grid-template-columns: 1fr 1fr; }
+.custom-left { padding: 32px 28px; }
+.custom-eyebrow { font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #A0956A; margin-bottom: 12px; }
+.custom-left h2 { font-family: Georgia, serif; font-size: 22px; font-weight: 400; color: #F2EDE0; line-height: 1.3; margin-bottom: 10px; }
+.custom-left h2 em { font-style: italic; color: #C4A882; }
+.custom-left p { font-size: 12.5px; color: rgba(242,237,224,0.55); line-height: 1.75; margin-bottom: 20px; }
+.custom-cta-btn { display: inline-flex; align-items: center; gap: 8px; background: #F2EDE0; color: #3A3C2C; font-size: 13px; font-weight: 500; padding: 11px 20px; border-radius: 6px; border: none; cursor: pointer; font-family: inherit; transition: background 0.15s; }
+.custom-cta-btn:hover { background: #e4ddd0; }
+.custom-cta-sub { font-size: 10px; color: rgba(242,237,224,0.3); margin-top: 8px; }
+.custom-right { padding: 32px 28px; border-left: 0.5px solid rgba(242,237,224,0.1); display: flex; flex-direction: column; gap: 10px; justify-content: center; }
+.custom-right-label { font-size: 10px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(242,237,224,0.3); margin-bottom: 4px; }
+.service-tags-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+.service-tag { display: inline-flex; align-items: center; gap: 7px; font-size: 11.5px; color: rgba(242,237,224,0.7); background: rgba(242,237,224,0.07); border: 0.5px solid rgba(242,237,224,0.12); border-radius: 6px; padding: 7px 12px; }
+.service-tag .dot { width: 5px; height: 5px; border-radius: 50%; background: #A0956A; flex-shrink: 0; }
+.custom-note { font-size: 11px; color: rgba(242,237,224,0.3); line-height: 1.5; margin-top: 6px; font-style: italic; }
+
+.bottom-cta { margin: 24px 20px 32px; background: #FDFAF4; border: 0.5px solid rgba(58,60,44,0.15); border-radius: 12px; padding: 24px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.bottom-cta-left h3 { font-family: Georgia, serif; font-size: 17px; font-weight: 400; color: #2C2A20; margin-bottom: 5px; }
+.bottom-cta-left p { font-size: 12px; color: #7A7060; line-height: 1.65; }
+.bottom-cta-left p em { color: #9B9080; font-style: italic; }
+.bottom-cta-btn { background: #3A3C2C; color: #F2EDE0; font-size: 13px; font-weight: 500; padding: 11px 20px; border-radius: 6px; border: none; cursor: pointer; font-family: inherit; white-space: nowrap; flex-shrink: 0; transition: background 0.15s; }
+.bottom-cta-btn:hover { background: #2a2c1f; }
+
+.footer { background: #2C2E20; padding: 28px 28px 20px; }
+.footer-top { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+.footer-brand .logo { font-family: Georgia, serif; font-size: 14px; color: #F2EDE0; margin-bottom: 6px; }
+.footer-brand p { font-size: 11px; color: rgba(242,237,224,0.35); line-height: 1.6; }
+.footer-col-label { font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(242,237,224,0.3); margin-bottom: 10px; }
+.footer-link { font-size: 11px; color: rgba(242,237,224,0.45); display: block; margin-bottom: 6px; cursor: pointer; text-decoration: none; transition: color 0.15s; }
+.footer-link:hover { color: #F2EDE0; }
+.footer-contact-item { font-size: 11px; color: rgba(242,237,224,0.45); margin-bottom: 6px; }
+.footer-bottom { border-top: 0.5px solid rgba(242,237,224,0.08); padding-top: 16px; display: flex; justify-content: space-between; align-items: center; }
+.footer-bottom p { font-size: 10px; color: rgba(242,237,224,0.2); line-height: 1.5; }
+.footer-privacy { font-size: 10px; color: rgba(242,237,224,0.25); cursor: pointer; text-decoration: none; }
+
+@media (max-width: 768px) {
+  .tiers-grid { grid-template-columns: 1fr; }
+  .custom-card { grid-template-columns: 1fr; }
+  .custom-right { border-left: none; border-top: 0.5px solid rgba(242,237,224,0.1); }
+  .human-steps { grid-template-columns: 1fr; }
+  .audit-banner { grid-template-columns: 1fr; }
+  .audit-right { display: none; }
+  .bottom-cta { flex-direction: column; }
+  .footer-top { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-logo">CHER</div>
+  <div class="nav-links">
+    <a href="#">What we do</a>
+    <a href="#">About us</a>
+    <a class="active" href="#">Packages</a>
+    <a href="#">Blogs</a>
+    <a href="#">FAQ</a>
+    <a class="nav-cta" href="#">Free salon audit</a>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="eyebrow">Salon Marketing Packages — Hair, Nails, Spas & More</div>
+  <h1>Your Competitors Are Already<br>on Google. <em>Let's Fix That.</em></h1>
+  <p class="sub">
+    Salon marketing packages built for beauty businesses done being invisible online.<br>
+    Month-to-month. No lock-in. No guesswork. Just more clients finding <em>you</em> first.<br><br>
+    Not sure where to start? <a href="#">Get your free Cher Salon Audit PDF →</a>
+  </p>
+  <div class="trust-row">
+    <span class="trust-pill">Month-to-month · cancel anytime</span>
+    <span class="trust-pill">No hidden fees, ever</span>
+    <span class="trust-pill">The Cher team reads every report — then walks you through it</span>
+  </div>
+</div>
+
+<div class="tiers-section">
+  <div class="tiers-grid">
+
+    <!-- TIER 1 -->
+    <div class="pkg-card">
+      <div class="card-top">
+        <div class="card-tier-label">Starter · Local SEO Package</div>
+        <div class="card-name">The Glow Starter</div>
+        <div class="card-tagline">"I just Googled my salon and I'm not even on the map." — Yeah, we've heard this. Let's fix it.</div>
+        <div class="price-row"><span class="price-num">$450</span><span class="price-per">/ month</span></div>
+      </div>
+      <div class="card-features">
+        <div class="feature-item"><span class="feat-dot green"></span>Google Business Profile set up and ranked for local searches</div>
+        <div class="feature-item"><span class="feat-dot green"></span>Local SEO so clients find you when they search "salon near me"</div>
+        <div class="feature-item"><span class="feat-dot green"></span>Simple dashboard — traffic, visibility, what's working</div>
+        <div class="feature-item"><span class="feat-dot green"></span>Landing page kept live and actually up to date</div>
+        <div class="feature-item"><span class="feat-dot green"></span>Monthly report — written, read, and walked through by the Cher team</div>
+      </div>
+      <div class="card-bestfor">
+        <div class="bestfor-label">This one's for you if...</div>
+        <div class="bestfor-text">You're new, you're solo, or Google has been sitting on your to-do list for six months. No shame — that's what we're here for.</div>
+      </div>
+      <div class="card-addons">
+        <div class="addon-label">Optional add-on</div>
+        <div class="addon-item"><span>Website setup or redesign</span><span class="addon-price">$800 one-time</span></div>
+      </div>
+      <div class="card-cta">
+        <button class="cta-btn outline">Start here →</button>
+        <div class="cta-reassure">No commitment · cancel the moment it's not working</div>
+      </div>
+    </div>
+
+    <!-- TIER 2 FEATURED -->
+    <div class="pkg-card featured">
+      <div class="featured-bar">
+        <span>★ &nbsp;Most popular</span>
+        <span class="rec">Where results happen</span>
+      </div>
+      <div class="card-top">
+        <div class="card-tier-label">Growth · Google + Meta Ads Management</div>
+        <div class="card-name">The Digital Makeover</div>
+        <div class="card-tagline">"I have a website. People visit. Nobody books." — Oof. We know exactly what's wrong.</div>
+        <div class="price-row"><span class="price-num">$850</span><span class="price-per">/ month</span></div>
+      </div>
+      <div class="card-features">
+        <div class="feature-item inherit"><span class="feat-dot"></span>Everything in Glow Starter, plus:</div>
+        <div class="feature-item"><span class="feat-dot"></span>Google + Meta ads running and targeting the right clients</div>
+        <div class="feature-item"><span class="feat-dot"></span>Conversion tracking — know exactly which ad filled your chair</div>
+        <div class="feature-item"><span class="feat-dot"></span>Custom website up to 3 pages, designed to convert</div>
+        <div class="feature-item"><span class="feat-dot"></span>End-of-month walkthrough call — the team breaks down what worked, what didn't, and what's next</div>
+      </div>
+      <div class="card-nudge">
+        <div class="nudge-text">This is the one. Most salons see their first real booking spike here — because for the first time, everything is actually working together.</div>
+      </div>
+      <div class="card-bestfor">
+        <div class="bestfor-label">This one's for you if...</div>
+        <div class="bestfor-text">You're established, you're ready to compete, and you're tired of watching the salon down the road get all the new clients.</div>
+      </div>
+      <div class="card-addons">
+        <div class="addon-label">Optional add-ons</div>
+        <div class="addon-item"><span>Full website build</span><span class="addon-price">$900 one-time</span></div>
+        <div class="addon-item"><span>Booking integration setup</span><span class="addon-price">$100 one-time</span></div>
+      </div>
+      <div class="card-cta">
+        <button class="cta-btn primary">This is my plan →</button>
+        <div class="cta-reassure">No commitment · cancel the moment it's not working</div>
+      </div>
+    </div>
+
+    <!-- TIER 3 -->
+    <div class="pkg-card">
+      <div class="card-top">
+        <div class="card-tier-label">Full Scale · Local Market Domination</div>
+        <div class="card-name">The Luxe Growth Suite</div>
+        <div class="card-tagline">"I want to be the salon everyone in this city knows." — Now we're talking.</div>
+        <div class="price-row"><span class="price-num">$1,200</span><span class="price-per">/ month</span></div>
+      </div>
+      <div class="card-features">
+        <div class="feature-item inherit"><span class="feat-dot"></span>Everything in Digital Makeover, plus:</div>
+        <div class="feature-item"><span class="feat-dot"></span>AI-powered ad testing — squeezing every dollar of your budget</div>
+        <div class="feature-item"><span class="feat-dot"></span>Email + SMS remarketing to bring back clients who ghosted</div>
+        <div class="feature-item"><span class="feat-dot"></span>Advanced SEO + review strategy building your rep on autopilot</div>
+        <div class="feature-item"><span class="feat-dot"></span>Full dashboard — ROI, traffic, booking trends, all of it</div>
+        <div class="feature-item"><span class="feat-dot"></span>Quarterly 90-day strategy session — big picture, real talk</div>
+      </div>
+      <div class="card-bestfor">
+        <div class="bestfor-label">This one's for you if...</div>
+        <div class="bestfor-text">You have the team, you have the talent, and you're ready for the kind of growth that makes you think about a second location.</div>
+      </div>
+      <div class="card-addons">
+        <div class="addon-label">Optional add-ons</div>
+        <div class="addon-item"><span>Full website build</span><span class="addon-price">$900 one-time</span></div>
+        <div class="addon-item"><span>Booking integration setup</span><span class="addon-price">$100 one-time</span></div>
+      </div>
+      <div class="card-cta">
+        <button class="cta-btn outline">Let's scale →</button>
+        <div class="cta-reassure">No commitment · cancel the moment it's not working</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- HUMAN BANNER -->
+<div class="human-banner">
+  <div class="human-banner-top">
+    <div class="human-icon">
+      <svg viewBox="0 0 22 22">
+        <circle cx="8" cy="7" r="3"/>
+        <circle cx="15" cy="7" r="3"/>
+        <path d="M1 19c0-3.5 3-6 7-6"/>
+        <path d="M10 19c0-3.5 3-6 7-6s5 2.5 5 6"/>
+      </svg>
+    </div>
+    <div class="human-text">
+      <h4>No auto-generated PDFs. No dashboards emailed into the void.<br><em>The Cher team reads every report — then gets on a call to walk you through it.</em></h4>
+      <p>At the end of every month, a real member of the Cher team sits down with your numbers, writes your report, and then walks you through it on a call — so you actually understand what's working, what's not, and exactly what we're doing about it next month.</p>
+    </div>
+  </div>
+  <div class="human-steps">
+    <div class="human-step">
+      <div class="step-num">01</div>
+      <div class="step-title">We review your month</div>
+      <div class="step-desc">The team goes through every metric — traffic, bookings, ad performance — line by line.</div>
+    </div>
+    <div class="human-step">
+      <div class="step-num">02</div>
+      <div class="step-title">We write your report</div>
+      <div class="step-desc">Plain English. No jargon. Written specifically for your salon, not copy-pasted from a template.</div>
+    </div>
+    <div class="human-step">
+      <div class="step-num">03</div>
+      <div class="step-title">We walk you through it</div>
+      <div class="step-desc">End-of-month call where we explain what happened, what it means, and what we're doing next.</div>
+    </div>
+  </div>
+</div>
+
+<!-- PDF AUDIT BANNER -->
+<div class="audit-banner">
+  <div class="audit-left">
+    <div class="audit-eyebrow">Free resource <span class="pdf-badge">PDF</span></div>
+    <h3>The Cher Salon Audit —<br><em>See exactly where you're losing bookings.</em></h3>
+    <p>Not ready to commit to a plan? Start here. Our free Cher Salon Audit PDF breaks down your Google presence, local visibility, and website — and shows you the exact gaps costing you clients right now.</p>
+    <div class="audit-what">
+      <div class="audit-point">Your Google Business Profile score — are you set up to rank?</div>
+      <div class="audit-point">Local SEO check — who's outranking you and why</div>
+      <div class="audit-point">Website conversion audit — why visitors aren't booking</div>
+      <div class="audit-point">Your top 3 quick wins — things you can fix this week</div>
+    </div>
+  </div>
+  <div class="audit-right">
+    <div class="pdf-mockup">
+      <div class="pdf-top-bar">
+        <div class="pdf-dot"></div><div class="pdf-dot"></div><div class="pdf-dot"></div>
+      </div>
+      <div class="pdf-lines">
+        <div class="pdf-line accent"></div>
+        <div class="pdf-line short"></div>
+        <div class="pdf-line"></div>
+        <div class="pdf-line short"></div>
+        <div class="pdf-line accent" style="width:40%"></div>
+        <div class="pdf-line"></div>
+        <div class="pdf-line short"></div>
+        <div class="pdf-line"></div>
+      </div>
+      <div class="pdf-label">Cher Salon Audit</div>
+    </div>
+    <button class="audit-cta-btn">Get my free PDF →</button>
+    <div class="audit-sub">Delivered to your inbox. Free, always.</div>
+  </div>
+</div>
+
+<!-- CUSTOM PLAN -->
+<div class="custom-section">
+  <div class="custom-card">
+    <div class="custom-left">
+      <div class="custom-eyebrow">Custom plan · Built around you</div>
+      <h2>None of these feel<br><em>quite right?</em></h2>
+      <p>Good — that means you probably need something specific. Whether it's social media management, content creation, influencer collabs, or a totally bespoke strategy, we'll build it around what your salon actually needs.</p>
+      <button class="custom-cta-btn">Tell us what you need →</button>
+      <div class="custom-cta-sub">We'll reply within 24 hours with a real, tailored quote.</div>
+    </div>
+    <div class="custom-right">
+      <div class="custom-right-label">Popular custom add-ons</div>
+      <div class="service-tags-grid">
+        <div class="service-tag"><span class="dot"></span>Social media management</div>
+        <div class="service-tag"><span class="dot"></span>Content creation</div>
+        <div class="service-tag"><span class="dot"></span>Influencer outreach</div>
+        <div class="service-tag"><span class="dot"></span>Reels & short-form video</div>
+        <div class="service-tag"><span class="dot"></span>Loyalty & referral campaigns</div>
+        <div class="service-tag"><span class="dot"></span>Multi-location strategy</div>
+      </div>
+      <div class="custom-note">Don't see it? Just ask. If it fills chairs, we've probably figured it out.</div>
+    </div>
+  </div>
+</div>
+
+<!-- BOTTOM CTA -->
+<div class="bottom-cta">
+  <div class="bottom-cta-left">
+    <h3>Still not sure? Start for free.</h3>
+    <p>Get the free Cher Salon Audit PDF — we'll show you exactly what's costing you bookings right now, and which plan (if any) would fix it.<br><em>No call. No pitch. Just honest feedback, delivered as a PDF.</em></p>
+  </div>
+  <button class="bottom-cta-btn">Get the free audit PDF →</button>
+</div>
+
+<div class="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="logo">CHER Digital Analytics</div>
+      <p>Helping salon owners fill their books — without the marketing overwhelm.</p>
+    </div>
+    <div>
+      <div class="footer-col-label">Quick links</div>
+      <a class="footer-link" href="#">What we do</a>
+      <a class="footer-link" href="#">About us</a>
+      <a class="footer-link" href="#">Blogs</a>
+      <a class="footer-link" href="#">Packages</a>
+      <a class="footer-link" href="#">Work with us</a>
+    </div>
+    <div>
+      <div class="footer-col-label">Get in touch</div>
+      <div class="footer-contact-item">(413) 377-8945</div>
+      <div class="footer-contact-item">hello@cherdigitalanalytics.com</div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Cher Digital Analytics. Built for salon owners who are done being invisible online.</p>
+    <a class="footer-privacy" href="#">Privacy policy</a>
+  </div>
+</div>
+
+</body>
+</html>
