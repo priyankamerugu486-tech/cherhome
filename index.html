@@ -17,10 +17,365 @@
   --cord-light: rgba(131,74,73,0.1);
   --olive-light: rgba(61,68,54,0.08);
 }
+:root {
+    --rosy:     #C49797;
+    --rosy-lt:  #D4AFAF;
+    --cordovan: #834A49;
+    --olive:    #3D4436;
+    --olive-lt: #4E5645;
+    --eerie:    #1B1B1D;
+    --ivory:    #F8F6E3;
+    --ivory-dk: #EDE9D0;
+    --muted:    #9A8A7A;
+  }
+
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--ivory); color: var(--black); }
+.overlay {
+    display: none;
+    position: fixed;
+  
+    inset: 0;
+    background: rgba(27,27,29,0.75);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: 16px;
+    opacity: 0; 
+    
+}
 
+ /* .overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(27,27,29,0.75);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: 16px;
+    animation: fadeIn 0.4s ease forwards;
+  } */
+  @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+
+  .popup {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    background: var(--ivory);
+    border: 1px solid var(--rosy);
+    overflow: hidden;
+    animation: riseUp 0.6s cubic-bezier(0.16,1,0.3,1) forwards;
+    box-shadow: 0 32px 80px rgba(27,27,29,0.4);
+
+    /* box-shadow: 0 32px 80px rgba(27,27,29,0.4); */
+  }
+  @keyframes riseUp {
+    from { opacity:0; transform: translateY(36px) scale(0.96); }
+    to   { opacity:1; transform: translateY(0) scale(1); }
+    
+  }
+  .overlay.active {
+    display: flex;
+    animation: fadeIn 0.4s ease forwards;
+}
+  
+  .overlay.active .popup {
+    animation: riseUp 0.6s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+
+  /* TICKER */
+  .ticker {
+    background: var(--olive);
+    height: 36px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+  }
+  .ticker-track {
+    display: flex;
+    animation: ticker 20s linear infinite;
+    white-space: nowrap;
+  }
+  .ticker-track span {
+    font-size: 9px;
+    letter-spacing: 0.28em;
+    color: rgba(248,246,227,0.5);
+    text-transform: uppercase;
+    padding: 0 28px;
+  }
+  .ticker-track span.acc { color: var(--rosy-lt); }
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  /* CLOSE */
+  .close-btn {
+    position: absolute;
+    top: 46px;
+    right: 18px;
+    background: none;
+    border: 1px solid rgba(131,74,73,0.3);
+    width: 28px; height: 28px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    color: var(--cordovan);
+    font-size: 12px;
+    z-index: 10;
+    transition: background 0.2s, color 0.2s;
+    font-family: 'DM Mono', monospace;
+  }
+  .close-btn:hover { background: var(--cordovan); color: var(--ivory); }
+
+  /* GRID */
+  .popup-body {
+    display: grid;
+    grid-template-columns: 210px 1fr;
+  }
+
+  /* LEFT */
+  .left {
+    background: var(--eerie);
+    padding: 34px 26px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    min-height: 390px;
+  }
+  .left::before {
+    content: 'CW';
+    position: absolute;
+    bottom: -18px; right: -8px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 130px;
+    font-weight: 600;
+    font-style: italic;
+    color: rgba(196,151,151,0.055);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+  }
+  .left::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 2px; height: 100%;
+    background: linear-gradient(to bottom, var(--cordovan), var(--rosy), transparent);
+    opacity: 0.5;
+  }
+
+  .left-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 8px; letter-spacing: 0.3em;
+    color: var(--rosy); text-transform: uppercase;
+    border: 1px solid rgba(196,151,151,0.22);
+    padding: 4px 10px; width: fit-content;
+    margin-bottom: 16px;
+  }
+  .left-tag::before { content: '✦'; font-size: 7px; }
+
+  .left h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px; font-weight: 300; line-height: 0.88;
+    color: var(--ivory); letter-spacing: -0.01em;
+    margin-bottom: 12px; position: relative;
+  }
+  .left h2 em {
+    font-style: italic; color: var(--rosy-lt); display: block;
+  }
+  .left-sub {
+    font-size: 9.5px; letter-spacing: 0.1em;
+    color: rgba(248,246,227,0.36); line-height: 1.7;
+  }
+
+  .proof-pill {
+    margin-top: 28px;
+    background: rgba(196,151,151,0.09);
+    border: 1px solid rgba(196,151,151,0.18);
+    padding: 14px 16px;
+  }
+  .proof-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px; font-weight: 600;
+    color: var(--rosy-lt); line-height: 1;
+    display: block; margin-bottom: 3px;
+  }
+  .proof-label {
+    font-size: 7.5px; letter-spacing: 0.22em;
+    color: rgba(248,246,227,0.38); text-transform: uppercase;
+  }
+
+  .avatars {
+    display: flex; margin-top: 10px;
+  }
+  .avatars span {
+    width: 25px; height: 25px; border-radius: 50%;
+    border: 2px solid var(--eerie);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 9px; color: var(--ivory);
+    margin-right: -7px;
+    font-family: 'Cormorant Garamond', serif; font-weight: 600;
+    background: var(--cordovan);
+  }
+  .avatars span:nth-child(2) { background: #5C3A3A; }
+  .avatars span:nth-child(3) { background: var(--olive-lt); }
+  .avatars span:nth-child(4) { background: #7A4A4A; }
+  .avatars span.more {
+    background: rgba(196,151,151,0.13);
+    color: var(--rosy); font-family: 'DM Mono', monospace;
+    font-size: 7px; font-weight: 400;
+    border-color: rgba(196,151,151,0.18);
+  }
+
+  /* RIGHT */
+  .right {
+    padding: 34px 40px 34px 32px;
+    display: flex; flex-direction: column;
+    justify-content: space-between;
+    background: var(--ivory);
+  }
+
+  .eyebrow {
+    font-size: 8.5px; letter-spacing: 0.3em;
+    color: var(--cordovan); text-transform: uppercase;
+    display: flex; align-items: center; gap: 8px;
+    margin-bottom: 10px;
+  }
+  .eyebrow::before {
+    content: ''; display: block;
+    width: 18px; height: 1px;
+    background: var(--cordovan); opacity: 0.4;
+  }
+
+  .right h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px; font-weight: 400;
+    color: var(--eerie); line-height: 1.28;
+    margin-bottom: 18px;
+  }
+  .right h3 strong { font-weight: 600; color: var(--cordovan); }
+
+  .perks {
+    list-style: none; margin-bottom: 22px;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .perks li {
+    display: flex; align-items: flex-start; gap: 9px;
+    font-size: 10.5px; letter-spacing: 0.04em;
+    color: #5A4F47; line-height: 1.5;
+  }
+  .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    flex-shrink: 0; margin-top: 4px;
+    background: var(--rosy);
+  }
+  .dot.c { background: var(--cordovan); }
+  .dot.o { background: var(--olive); }
+
+  /* FORM */
+  .form-row {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 8px; margin-bottom: 8px;
+  }
+  .f { position: relative; }
+  .f.full { grid-column: 1 / -1; }
+  .f input {
+    width: 100%;
+    background: transparent;
+    border: 1px solid rgba(131,74,73,0.18);
+    border-bottom: 1.5px solid rgba(131,74,73,0.38);
+    padding: 11px 12px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10.5px;
+    color: var(--eerie);
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+    letter-spacing: 0.05em;
+    -webkit-appearance: none;
+  }
+  .f input::placeholder { color: rgba(27,27,29,0.3); }
+  .f input:focus {
+    border-color: var(--cordovan);
+    background: rgba(131,74,73,0.03);
+  }
+
+  .cta {
+    width: 100%; background: var(--cordovan);
+    color: var(--ivory); border: none;
+    padding: 14px 16px;
+    font-family: 'DM Mono', monospace;
+    font-size: 9.5px; letter-spacing: 0.22em; text-transform: uppercase;
+    cursor: pointer; transition: background 0.25s;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    margin-top: 4px;
+  }
+  .cta:hover { background: var(--olive); }
+  .cta .arr { transition: transform 0.25s; }
+  .cta:hover .arr { transform: translateX(4px); }
+
+  .fine {
+    font-size: 8px; letter-spacing: 0.12em;
+    color: rgba(27,27,29,0.28); text-align: center; margin-top: 9px;
+  }
+
+  /* SUCCESS */
+  .success {
+    display: none; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center; flex: 1; padding: 12px 0;
+  }
+  .s-icon {
+    width: 50px; height: 50px; border-radius: 50%;
+    background: rgba(131,74,73,0.08);
+    border: 1px solid rgba(131,74,73,0.2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; color: var(--cordovan);
+    margin: 0 auto 14px;
+  }
+  .success h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px; font-weight: 400;
+    color: var(--eerie); margin-bottom: 8px;
+  }
+  .success p {
+    font-size: 10px; letter-spacing: 0.08em;
+    color: var(--muted); line-height: 1.8;
+  }
+
+  /* BOTTOM BAR */
+  .bar {
+    background: var(--olive);
+    padding: 10px 26px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .bar-l {
+    font-size: 8px; letter-spacing: 0.2em;
+    color: rgba(248,246,227,0.38); text-transform: uppercase;
+  }
+  .dots { display: flex; gap: 5px; align-items: center; }
+  .di {
+    width: 5px; height: 5px; border-radius: 50%;
+    background: rgba(248,246,227,0.18);
+  }
+  .di.on { background: var(--rosy-lt); }
+
+  /* MOBILE */
+  @media (max-width: 580px) {
+    .popup-body { grid-template-columns: 1fr; }
+    .left { min-height: auto; padding: 28px 22px; }
+    .left h2 { font-size: 42px; }
+    .right { padding: 28px 22px; }
+    .form-row { grid-template-columns: 1fr; }
+    .close-btn { top: 44px; }
+  }
 /* ── NAV ── */
 .nav {
   background: var(--olive);
@@ -726,5 +1081,134 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   </div>
 </footer>
 
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="popup-heading">
+  <div class="popup">
+
+    <!-- TICKER -->
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track">
+        <span>Cher Weekly</span><span class="acc">✦</span>
+        <span>Free Salon Marketing Newsletter</span><span class="acc">✦</span>
+        <span>2,000+ Salon Owners</span><span class="acc">✦</span>
+        <span>Local SEO · Google Ads · Analytics</span><span class="acc">✦</span>
+        <span>Every Wednesday</span><span class="acc">✦</span>
+        <!-- duplicate for loop -->
+        <span>Cher Weekly</span><span class="acc">✦</span>
+        <span>Free Salon Marketing Newsletter</span><span class="acc">✦</span>
+        <span>2,000+ Salon Owners</span><span class="acc">✦</span>
+        <span>Local SEO · Google Ads · Analytics</span><span class="acc">✦</span>
+        <span>Every Wednesday</span><span class="acc">✦</span>
+      </div>
+    </div>
+
+    <!-- CLOSE -->
+    <button class="close-btn" id="closeBtn" aria-label="Close popup">✕</button>
+
+    <!-- BODY -->
+    <div class="popup-body">
+
+      <!-- LEFT -->
+      <div class="left" aria-hidden="true">
+        <div>
+          <div class="left-tag">Free weekly</div>
+          <h2><em>Cher</em>Weekly.</h2>
+          <p class="left-sub">Marketing intelligence<br>for beauty businesses.<br>Zero jargon.</p>
+        </div>
+        <div>
+          <div class="proof-pill">
+            <span class="proof-num">2,000+</span>
+            <span class="proof-label">Salon owners subscribed</span>
+          </div>
+          <div class="avatars">
+            <span>A</span><span>M</span><span>S</span><span>R</span>
+            <span class="more">+1.9k</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="right">
+        <div id="formState" style="display:flex;flex-direction:column;justify-content:space-between;height:100%">
+          <div>
+            <p class="eyebrow">Join the list</p>
+            <h3 id="popup-heading">Your salon needs<br><strong>smarter marketing.</strong></h3>
+            <ul class="perks">
+              <li><span class="dot"></span>Weekly local SEO tips that drive real foot traffic</li>
+              <li><span class="dot c"></span>Google & Meta Ads strategies for beauty owners</li>
+              <li><span class="dot o"></span>AI insights & analytics — simplified, actionable</li>
+              <li><span class="dot"></span>Real case studies from salons just like yours</li>
+            </ul>
+          </div>
+          <div>
+            <div class="form-row">
+              <div class="f"><input type="text" id="nameInput" placeholder="First name" autocomplete="given-name" aria-label="First name"></div>
+              <div class="f"><input type="text" id="salonInput" placeholder="Salon name" aria-label="Salon name"></div>
+              <div class="f full"><input type="email" id="emailInput" placeholder="Email address" autocomplete="email" aria-label="Email address"></div>
+            </div>
+            <button class="cta" onclick="handleSubmit()">
+              <span>Join 2,000+ Salon Owners</span><span class="arr">→</span>
+            </button>
+            <p class="fine">Free forever · No spam · Unsubscribe anytime</p>
+          </div>
+        </div>
+
+        <!-- SUCCESS -->
+        <div class="success" id="successState">
+          <div class="s-icon">✦</div>
+          <h4>You're in the club!</h4>
+          <p>Welcome to Cher Weekly.<br>Check your inbox — your first issue<br>drops this Wednesday.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- BOTTOM BAR -->
+    <div class="bar" aria-hidden="true">
+      <span class="bar-l">cherdigitalanalytics.com · Austin, TX</span>
+      <div class="dots">
+        <div class="di on"></div><div class="di"></div><div class="di"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<script>
+  // Page load trigger 
+  window.addEventListener('load', function() {
+    
+    
+    // ---  line ni delete  (localStorage.clear()) ---
+    // localStorage.removeItem('cherWeeklyPopup'); 
+
+    console.log("Script start ayindi... 5 seconds aagandi.");
+
+    // 5 Seconds wait chestundi
+    setTimeout(function() {
+      // 1.  (ID: overlay)
+      var overlay = document.getElementById('overlay');
+      
+      if (overlay) {
+        // 2. CSS  force 
+        overlay.style.display = 'flex'; 
+        overlay.style.visibility = 'visible';
+        overlay.style.opacity = '1';
+        overlay.style.zIndex = '9999999'; 
+        
+        console.log("Popup screen meeda ki vachindi!");
+        
+        
+        // localStorage.setItem('cherWeeklyPopup', 'true'); 
+      } else {
+        // Okavela element lekapothe console lo error chupisthundi
+        console.error("ERROR: 'overlay' ane ID tho element dorakaledu. HTML lo check cheyandi.");
+      }
+    }, 5000); // 5000 = 5 seconds
+  });
+
+  // Close Button Logic
+  document.getElementById('closeBtn').addEventListener('click', function() {
+    document.getElementById('overlay').style.display = 'none';
+  });
+</script>
 </body>
 </html>
