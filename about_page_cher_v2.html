@@ -1,0 +1,401 @@
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+.page { font-family: var(--font-sans); background: #F5F0E8; }
+
+.nav { background: #3A3C2C; display: flex; align-items: center; justify-content: space-between; padding: 0 28px; height: 52px; }
+.nav-logo { font-family: Georgia, serif; font-size: 15px; color: #F2EDE0; letter-spacing: 0.06em; }
+.nav-links { display: flex; gap: 20px; align-items: center; }
+.nav-links a { font-size: 11px; color: rgba(242,237,224,0.55); text-decoration: none; cursor: pointer; transition: color 0.15s; }
+.nav-links a:hover, .nav-links a.active { color: #F2EDE0; }
+.nav-cta { font-size: 11px; font-weight: 500; color: #3A3C2C; background: #F2EDE0; padding: 6px 14px; border-radius: 4px; cursor: pointer; text-decoration: none; transition: background 0.15s; }
+.nav-cta:hover { background: #e4ddd0; }
+
+/* HERO */
+.hero { background: #3A3C2C; padding: 56px 32px 52px; position: relative; overflow: hidden; }
+.hero-ticker { background: #A0614A; padding: 8px 0; margin-bottom: 40px; overflow: hidden; white-space: nowrap; }
+.hero-ticker-inner { display: inline-block; animation: ticker 18s linear infinite; font-size: 10px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #F2EDE0; }
+@keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.hero-eyebrow { font-size: 10px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: #A0956A; margin-bottom: 16px; }
+.hero h1 { font-family: Georgia, serif; font-size: 38px; font-weight: 400; color: #F2EDE0; line-height: 1.15; margin-bottom: 20px; }
+.hero h1 em { font-style: italic; color: #C4A882; }
+.hero-sub { font-size: 14px; color: rgba(242,237,224,0.6); line-height: 1.85; max-width: 520px; margin-bottom: 32px; }
+.hero-sub strong { color: #F2EDE0; font-weight: 500; }
+.hero-pills { display: flex; gap: 8px; flex-wrap: wrap; }
+.hero-pill { font-size: 11px; color: rgba(242,237,224,0.6); background: rgba(242,237,224,0.07); border: 0.5px solid rgba(242,237,224,0.15); border-radius: 20px; padding: 5px 14px; }
+
+/* ORIGIN STORY */
+.origin { background: #F5F0E8; padding: 52px 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+.origin-left .eyebrow { font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #9B9080; margin-bottom: 14px; }
+.origin-left h2 { font-family: Georgia, serif; font-size: 26px; font-weight: 400; color: #2C2A20; line-height: 1.3; margin-bottom: 16px; }
+.origin-left h2 em { font-style: italic; color: #A0614A; }
+.origin-left p { font-size: 13px; color: #7A7060; line-height: 1.85; margin-bottom: 14px; }
+.origin-left p strong { color: #2C2A20; font-weight: 500; }
+.origin-right { display: flex; flex-direction: column; gap: 2px; }
+.origin-card { background: #FDFAF4; border: 0.5px solid rgba(58,60,44,0.1); border-radius: 10px; padding: 16px 18px; display: flex; gap: 14px; align-items: flex-start; }
+.origin-card + .origin-card { margin-top: 8px; }
+.oc-icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.oc-icon svg { width: 18px; height: 18px; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.oc-title { font-size: 12.5px; font-weight: 500; color: #2C2A20; margin-bottom: 3px; }
+.oc-desc { font-size: 11.5px; color: #7A7060; line-height: 1.55; }
+
+/* TEAM INTRO BAR */
+.team-intro-bar { background: #A0614A; padding: 28px 32px; text-align: center; }
+.team-intro-bar h2 { font-family: Georgia, serif; font-size: 22px; font-weight: 400; color: #F2EDE0; line-height: 1.35; }
+.team-intro-bar h2 em { font-style: italic; color: rgba(242,237,224,0.75); }
+.team-intro-bar p { font-size: 12.5px; color: rgba(242,237,224,0.6); margin-top: 8px; line-height: 1.65; }
+
+/* TEAM SECTION */
+.team-section { background: #3A3C2C; padding: 48px 28px; }
+.team-eyebrow { font-size: 10px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: #A0956A; margin-bottom: 28px; }
+
+/* ALL 4 CARDS EQUAL GRID */
+.team-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 14px; }
+.team-card { background: #FDFAF4; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.15s; }
+.team-card:hover { transform: translateY(-2px); }
+
+.card-header { padding: 24px 22px 18px; border-bottom: 0.5px solid rgba(58,60,44,0.07); display: flex; gap: 16px; align-items: flex-start; }
+.avatar { width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: Georgia, serif; font-size: 18px; font-weight: 400; flex-shrink: 0; }
+.av-ceo { background: #A0614A; color: #F2EDE0; }
+.av-dev { background: #3B6D11; color: #C0DD97; }
+.av-social { background: #72243E; color: #F4C0D1; }
+.av-hr { background: #633806; color: #FAC775; }
+
+.card-header-text { flex: 1; }
+.role-badge { display: inline-block; font-size: 9px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 9px; border-radius: 20px; margin-bottom: 7px; }
+.rb-ceo { background: rgba(160,97,74,0.12); color: #A0614A; }
+.rb-dev { background: rgba(59,109,17,0.1); color: #3B6D11; }
+.rb-social { background: rgba(114,36,62,0.1); color: #72243E; }
+.rb-hr { background: rgba(99,56,6,0.1); color: #633806; }
+
+.member-name { font-family: Georgia, serif; font-size: 19px; font-weight: 400; color: #2C2A20; margin-bottom: 2px; }
+.member-handle { font-size: 11px; color: #9B9080; letter-spacing: 0.04em; }
+.member-pun { font-size: 12px; color: #A0614A; font-style: italic; margin-top: 6px; line-height: 1.4; }
+
+.card-body { padding: 16px 22px; flex: 1; }
+.member-bio { font-size: 12.5px; color: #5C5448; line-height: 1.8; margin-bottom: 14px; }
+.member-bio em { font-style: italic; color: #2C2A20; }
+
+.card-does { background: rgba(58,60,44,0.03); border-radius: 8px; padding: 12px 14px; }
+.does-label { font-size: 9.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #9B9080; margin-bottom: 8px; }
+.does-row { display: flex; gap: 7px; align-items: flex-start; margin-bottom: 6px; font-size: 11px; color: #5C5448; line-height: 1.4; }
+.does-row:last-child { margin-bottom: 0; }
+.does-dot { width: 4px; height: 4px; border-radius: 50%; margin-top: 4px; flex-shrink: 0; }
+.dot-ceo { background: #A0614A; }
+.dot-dev { background: #3B6D11; }
+.dot-social { background: #72243E; }
+.dot-hr { background: #633806; }
+
+.card-footer-strip { padding: 12px 22px; border-top: 0.5px solid rgba(58,60,44,0.07); }
+.superpower-label { font-size: 9.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #9B9080; margin-bottom: 4px; }
+.superpower-text { font-size: 11.5px; color: #7A7060; font-style: italic; line-height: 1.4; }
+
+/* TOGETHER STRIP */
+.together { background: #F5F0E8; padding: 44px 32px; }
+.together-eyebrow { font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #9B9080; margin-bottom: 12px; }
+.together h2 { font-family: Georgia, serif; font-size: 24px; font-weight: 400; color: #2C2A20; margin-bottom: 20px; line-height: 1.3; }
+.together h2 em { font-style: italic; color: #A0614A; }
+.together-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 10px; }
+.tg-card { background: #FDFAF4; border: 0.5px solid rgba(58,60,44,0.1); border-radius: 10px; padding: 16px; }
+.tg-num { font-family: Georgia, serif; font-size: 24px; color: rgba(58,60,44,0.1); margin-bottom: 8px; }
+.tg-title { font-size: 12.5px; font-weight: 500; color: #2C2A20; margin-bottom: 5px; }
+.tg-desc { font-size: 11.5px; color: #7A7060; line-height: 1.6; }
+
+/* CTA */
+.cta-strip { background: #3A3C2C; padding: 40px 32px; display: flex; align-items: center; justify-content: space-between; gap: 28px; }
+.cta-left h3 { font-family: Georgia, serif; font-size: 22px; font-weight: 400; color: #F2EDE0; margin-bottom: 8px; line-height: 1.3; }
+.cta-left h3 em { font-style: italic; color: #C4A882; }
+.cta-left p { font-size: 12px; color: rgba(242,237,224,0.5); line-height: 1.65; }
+.cta-btn { background: #F2EDE0; color: #3A3C2C; font-size: 13px; font-weight: 500; padding: 13px 24px; border-radius: 6px; border: none; cursor: pointer; font-family: var(--font-sans); white-space: nowrap; flex-shrink: 0; transition: background 0.15s; }
+.cta-btn:hover { background: #e4ddd0; }
+
+/* FOOTER */
+.footer { background: #2C2E20; padding: 28px 28px 20px; }
+.footer-top { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+.footer-brand .logo { font-family: Georgia, serif; font-size: 14px; color: #F2EDE0; margin-bottom: 6px; }
+.footer-brand p { font-size: 11px; color: rgba(242,237,224,0.35); line-height: 1.6; }
+.footer-col-label { font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(242,237,224,0.3); margin-bottom: 10px; }
+.footer-link { font-size: 11px; color: rgba(242,237,224,0.45); display: block; margin-bottom: 6px; cursor: pointer; text-decoration: none; transition: color 0.15s; }
+.footer-link:hover { color: #F2EDE0; }
+.footer-contact-item { font-size: 11px; color: rgba(242,237,224,0.45); margin-bottom: 6px; }
+.footer-bottom { border-top: 0.5px solid rgba(242,237,224,0.08); padding-top: 16px; display: flex; justify-content: space-between; align-items: center; }
+.footer-bottom p { font-size: 10px; color: rgba(242,237,224,0.2); }
+.footer-privacy { font-size: 10px; color: rgba(242,237,224,0.25); cursor: pointer; text-decoration: none; }
+</style>
+
+<div class="page">
+
+  <nav class="nav">
+  <div class="nav-logo">
+    <a href="index.html" style="color: #f8f6e3; text-decoration: none;">cher</a>
+  </div>
+  <div class="nav-links">
+    <a href="comparison_page.html">What we do</a>
+    <a href="about_page_final.html">About us</a>
+    <!-- <a href="comparison_page.html">Why cher</a> -->
+    <a href="packages_page_final.html">Packages</a>
+    <a href="blog_page_seo.html">Blogs</a>
+    <a href="#">FAQ</a>
+    <a href="careers_page.html">career</a>
+    <a href="consultation_page.html">contact us</a>
+     <a href="directory_page_seo.html">Map</a>
+    <a href="free_audit_page.html" class="nav-cta">Free salon audit</a>
+  </div>
+</nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-ticker">
+      <span class="hero-ticker-inner">
+        Salon SEO · Google Ads · Social Media · Local Marketing · Content Creation · Analytics · Influencer Strategy · Booking Optimisation · &nbsp;&nbsp;&nbsp;
+        Salon SEO · Google Ads · Social Media · Local Marketing · Content Creation · Analytics · Influencer Strategy · Booking Optimisation · &nbsp;&nbsp;&nbsp;
+      </span>
+    </div>
+    <div class="hero-eyebrow">About Cher Digital · Salon Marketing Specialists</div>
+    <h1>We Took One Look at<br>the Beauty Industry<br>and Said, <em>"We Got You."</em></h1>
+    <p class="hero-sub">
+      Cher Digital exists because <strong>the best salons deserve to be the most visible ones.</strong> We're a tight team of four specialists who don't dabble — we go deep on beauty businesses and nothing else. Your Google presence, your bookings, your growth. That's all we think about.
+    </p>
+    <div class="hero-pills">
+      <span class="hero-pill">Salon-only focus</span>
+      <span class="hero-pill">No lock-in contracts</span>
+      <span class="hero-pill">Every report read by a real human</span>
+      <span class="hero-pill">End-of-month walkthrough, always</span>
+    </div>
+  </div>
+
+  <!-- ORIGIN -->
+  <div class="origin">
+    <div class="origin-left">
+      <div class="eyebrow">Why Cher exists · The origin story</div>
+      <h2>The best salons kept losing<br>to the <em>loudest ones.</em></h2>
+      <p>We kept seeing it — incredible stylists, talented nail techs, spa owners who'd built something genuinely special, getting buried on Google by competitors who were just better at marketing. Not better at the actual work. Just louder online.</p>
+      <p><strong>That felt wrong.</strong> So Charishma built Cher to fix it. A team that only works with beauty businesses, that actually learns your market, and that treats your growth like it's personal — because for us, it is.</p>
+    </div>
+    <div class="origin-right">
+      <div class="origin-card">
+        <div class="oc-icon" style="background:rgba(160,97,74,0.1);">
+          <svg viewBox="0 0 18 18" style="stroke:#A0614A;"><circle cx="9" cy="9" r="7"/><path d="M9 6v3l2 2"/></svg>
+        </div>
+        <div>
+          <div class="oc-title">We only work with beauty</div>
+          <div class="oc-desc">No dentists. No restaurants. No "we do a bit of everything." Just salons, spas, and studios — because deep focus beats broad dabbling every time.</div>
+        </div>
+      </div>
+      <div class="origin-card">
+        <div class="oc-icon" style="background:rgba(29,158,117,0.1);">
+          <svg viewBox="0 0 18 18" style="stroke:#1D9E75;"><path d="M3 9l4 4 8-8"/></svg>
+        </div>
+        <div>
+          <div class="oc-title">We earn it every month</div>
+          <div class="oc-desc">No contracts that trap you. We do good work, you stay. We don't, you walk. It's the only arrangement that keeps us honest.</div>
+        </div>
+      </div>
+      <div class="origin-card">
+        <div class="oc-icon" style="background:rgba(160,149,106,0.1);">
+          <svg viewBox="0 0 18 18" style="stroke:#A0956A;"><path d="M2 4h14v10a2 2 0 01-2 2H4a2 2 0 01-2-2V4z"/><path d="M2 4l7 7 7-7"/></svg>
+        </div>
+        <div>
+          <div class="oc-title">We walk you through everything</div>
+          <div class="oc-desc">End of every month, a real team member sits down with your numbers and explains them — in plain English, not marketing jargon.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TEAM INTRO BAR -->
+  <div class="team-intro-bar">
+    <h2>Four people. Zero bots. <em>All yours.</em></h2>
+    <p>These are the actual humans working on your salon's growth — reading your reports, building your website, designing your content, and keeping everything running. No outsourcing. No juniors learning on your dime.</p>
+  </div>
+
+  <!-- TEAM GRID — ALL 4 EQUAL -->
+  <div class="team-section">
+    <div class="team-eyebrow">The Cher Team · The People Behind Your Bookings</div>
+    <div class="team-grid">
+
+      <!-- CHARISHMA -->
+      <div class="team-card">
+        <div class="card-header">
+          <div class="avatar av-ceo">CP</div>
+          <div class="card-header-text">
+            <span class="role-badge rb-ceo">CEO & Founder</span>
+            <div class="member-name">Charishma Puli</div>
+            <div class="member-handle">The one who started it all</div>
+            <div class="member-pun">"If your salon isn't on the first page of Google, is it even open?" — probably Charishma, definitely at 7am.</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="member-bio">Charishma built Cher because she was tired of watching brilliant salons be invisible online. She sets the strategy, holds the vision, and makes sure every client gets the kind of attention that actually moves the needle — not just a monthly PDF and a shrug.</div>
+          <div class="card-does">
+            <div class="does-label">What she does for your salon</div>
+            <div class="does-row"><span class="does-dot dot-ceo"></span>Builds the overall marketing strategy for your specific market</div>
+            <div class="does-row"><span class="does-dot dot-ceo"></span>Reviews every client account monthly — nothing gets missed</div>
+            <div class="does-row"><span class="does-dot dot-ceo"></span>Your first call when something needs fixing, fast</div>
+          </div>
+        </div>
+        <div class="card-footer-strip">
+          <div class="superpower-label">Salon superpower</div>
+          <div class="superpower-text">Spots exactly why a salon isn't ranking on Google within five minutes of looking at it.</div>
+        </div>
+      </div>
+
+      <!-- PRIYANKA -->
+      <div class="team-card">
+        <div class="card-header">
+          <div class="avatar av-dev">PM</div>
+          <div class="card-header-text">
+            <span class="role-badge rb-dev">Web Developer</span>
+            <div class="member-name">Priyanka Mergu</div>
+            <div class="member-handle">Makes your website actually work</div>
+            <div class="member-pun">"A slow website is a cancelled appointment." — Priyanka, every time she opens a salon site on mobile.</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="member-bio">Priyanka builds websites that don't just look good — they convert. She knows that a salon client decides to book in the first 8 seconds, so every page she builds is designed to make that decision as easy as possible. Fast, mobile-first, and always booking-ready.</div>
+          <div class="card-does">
+            <div class="does-label">What she does for your salon</div>
+            <div class="does-row"><span class="does-dot dot-dev"></span>Builds and maintains your salon website from scratch</div>
+            <div class="does-row"><span class="does-dot dot-dev"></span>Sets up booking integrations so clients can book in two taps</div>
+            <div class="does-row"><span class="does-dot dot-dev"></span>Makes sure your site loads fast — especially on a phone</div>
+          </div>
+        </div>
+        <div class="card-footer-strip">
+          <div class="superpower-label">Salon superpower</div>
+          <div class="superpower-text">Can tell you exactly why visitors are leaving your website without booking — and fix it.</div>
+        </div>
+      </div>
+
+      <!-- DEEPA -->
+      <div class="team-card">
+        <div class="card-header">
+          <div class="avatar av-social">DJ</div>
+          <div class="card-header-text">
+            <span class="role-badge rb-social">Social Media Designer</span>
+            <div class="member-name">Deepa Jalli</div>
+            <div class="member-handle">Makes people stop the scroll</div>
+            <div class="member-pun">"Your feed should make someone want to book before they even read the caption." — Deepa, judging every salon Instagram in existence.</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="member-bio">Deepa is the creative brain behind your salon's visual world. She knows the difference between content that racks up likes and content that fills appointment books — and she exclusively makes the second kind. If your feed doesn't make someone pick up their phone, she's not done.</div>
+          <div class="card-does">
+            <div class="does-label">What she does for your salon</div>
+            <div class="does-row"><span class="does-dot dot-social"></span>Designs content that fits your salon's vibe and attracts your clients</div>
+            <div class="does-row"><span class="does-dot dot-social"></span>Creates reels, carousels, and graphics that drive actual bookings</div>
+            <div class="does-row"><span class="does-dot dot-social"></span>Makes your feed look like a salon worth travelling across the city for</div>
+          </div>
+        </div>
+        <div class="card-footer-strip">
+          <div class="superpower-label">Salon superpower</div>
+          <div class="superpower-text">Looks at a salon's Instagram and immediately knows the three posts that would double their enquiries.</div>
+        </div>
+      </div>
+
+      <!-- NIKITHA -->
+      <div class="team-card">
+        <div class="card-header">
+          <div class="avatar av-hr">ND</div>
+          <div class="card-header-text">
+            <span class="role-badge rb-hr">HR & Board Member</span>
+            <div class="member-name">Nikitha Duggirala</div>
+            <div class="member-handle">Keeps the whole thing running beautifully</div>
+            <div class="member-pun">"A great team is like a great blowout — looks effortless, takes serious skill." — Nikitha, probably.</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="member-bio">Nikitha is the reason Cher runs as well as it does. She makes sure the team is structured, motivated, and always showing up at full capacity — because a great strategy means nothing if the people executing it are stretched thin. You get consistent quality every month because Nikitha makes sure of it.</div>
+          <div class="card-does">
+            <div class="does-label">What she does for your salon</div>
+            <div class="does-row"><span class="does-dot dot-hr"></span>Ensures every client gets consistent, high-quality work every month</div>
+            <div class="does-row"><span class="does-dot dot-hr"></span>Holds the team accountable so nothing slips through the cracks</div>
+            <div class="does-row"><span class="does-dot dot-hr"></span>The structural backbone that lets the rest of the team do their best work</div>
+          </div>
+        </div>
+        <div class="card-footer-strip">
+          <div class="superpower-label">Salon superpower</div>
+          <div class="superpower-text">Spots a process gap before it becomes a client problem — every time.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- HOW WE WORK TOGETHER -->
+  <div class="together">
+    <div class="together-eyebrow">How the team works · What this means for your salon</div>
+    <h2>Every skill in the room.<br><em>All pointed at your growth.</em></h2>
+    <div class="together-grid">
+      <div class="tg-card">
+        <div class="tg-num">01</div>
+        <div class="tg-title">Strategy meets creativity</div>
+        <div class="tg-desc">Charishma's marketing strategy and Deepa's creative direction work together — so your campaigns don't just look good, they're built to convert.</div>
+      </div>
+      <div class="tg-card">
+        <div class="tg-num">02</div>
+        <div class="tg-title">Built and tracked</div>
+        <div class="tg-desc">Priyanka builds the tech that captures every click and booking — so when Charishma reviews your numbers, nothing is missing from the picture.</div>
+      </div>
+      <div class="tg-card">
+        <div class="tg-num">03</div>
+        <div class="tg-title">Consistent every month</div>
+        <div class="tg-desc">Nikitha makes sure you never get a "sorry we've been busy" month. Same quality, same attention, same accountability — month one or month twelve.</div>
+      </div>
+      <div class="tg-card">
+        <div class="tg-num">04</div>
+        <div class="tg-title">You always know who's working on what</div>
+        <div class="tg-desc">No mystery agency black box. You know exactly who handles your website, your content, your strategy. Real names. Real people. Real accountability.</div>
+      </div>
+      <div class="tg-card">
+        <div class="tg-num">05</div>
+        <div class="tg-title">End-of-month, every month</div>
+        <div class="tg-desc">The whole team reviews your numbers before your monthly call — so when we walk you through it, everyone's already across everything.</div>
+      </div>
+      <div class="tg-card">
+        <div class="tg-num">06</div>
+        <div class="tg-title">Small team on purpose</div>
+        <div class="tg-desc">We don't scale for the sake of it. We take on clients we can genuinely serve — because your salon deserves focus, not a number in a queue.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-strip">
+    <div class="cta-left">
+      <h3>Want to see the team<br><em>in action on your salon?</em></h3>
+      <p>Get the free Cher Salon Audit PDF — we'll analyse your Google presence, your visibility, and what's holding back your bookings. Delivered to your inbox. Free, always. No pitch attached.</p>
+    </div>
+    <button class="cta-btn">Get the free audit PDF →</button>
+  </div>
+
+  <div class="footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo">CHER Digital Analytics</div>
+        <p>Helping salon owners fill their books — without the marketing overwhelm.</p>
+      </div>
+     <div>
+      <div class="footer-col-label">Quick links</div>
+      <a class="footer-link" href="comparison_page.html">What we do</a>
+      <a class="footer-link" href="about_page_final.html">About us</a>
+      <a class="footer-link" href="packages_page_final.html">Packages</a>
+      <a class="footer-link" href="blog_page_seo.html">Blogs</a>
+      <a class="footer-link" href="free_audit_page.html">audit</a>
+      <a class="footer-link" href="careers_page.html">career</a>
+       <a class="footer-link" href="directory_page_seo.html">Map</a>
+      <a class="footer-link" href="consultation_page.html">contact us</a>
+
+    </div>
+      <div>
+        <div class="footer-col-label">Get in touch</div>
+        <div class="footer-contact-item">(413) 377-8945</div>
+        <div class="footer-contact-item">hello@cherdigitalanalytics.com</div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Cher Digital Analytics. Built for salon owners who are done being invisible online.</p>
+      <a class="footer-privacy">Privacy policy</a>
+    </div>
+  </div>
+
+</div>

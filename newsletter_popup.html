@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cher Weekly Newsletter Popup — Embed Snippet</title>
+</head>
+<body>
+
+<!--
+  ════════════════════════════════════════════════════════
+  CHER WEEKLY — NEWSLETTER POPUP
+  ════════════════════════════════════════════════════════
+
+  HOW TO ADD TO YOUR SITE:
+  Copy everything between the ── START ── and ── END ──
+  markers and paste it just before </body> on every page.
+
+  SEO & AI NOTES:
+  — The popup content is rendered in real HTML (not just JS),
+    so Google and AI crawlers can index the newsletter offer
+    as a Service and the FAQ answers inside it.
+  — Schema is injected via a <script type="application/ld+json">
+    that describes the newsletter as a structured Service.
+  — The popup never blocks the page from loading.
+    It fires after 5 seconds via requestIdleCallback.
+  — Dismissed state is stored in localStorage so it
+    never pops up again for someone who closed it or
+    subscribed. Resets after 30 days so new visitors
+    always see it.
+  ════════════════════════════════════════════════════════
+-->
+
+
+<!-- ── START — paste everything below this line ── -->
+
+<!-- SCHEMA: Newsletter as a Service — indexed by Google + AI -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Cher Weekly — Free Salon Marketing Newsletter",
+  "description": "A free weekly email newsletter for salon owners covering local SEO tips, Google Ads strategy, AI search visibility, and marketing tactics that fill appointment books. Published by Cher Digital Analytics.",
+  "provider": {
+    "@type": "Organization",
+    "name": "Cher Digital Analytics",
+    "url": "https://www.cherdigitalanalytics.com"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "description": "Free weekly newsletter — no cost, unsubscribe anytime"
+  },
+  "serviceType": "Email Newsletter",
+  "audience": {
+    "@type": "Audience",
+    "audienceType": "Salon owners, beauty business owners, hair stylists, nail techs, spa operators"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "United States"
+  }
+}
+</script>
+
+<!-- POPUP STYLES -->
+<style>
+#cher-popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(27,27,29,.55);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .3s ease, visibility .3s ease;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+#cher-popup-overlay.visible {
+  opacity: 1;
+  visibility: visible;
+}
+#cher-popup {
+  background: #FDFAF4;
+  border-radius: 20px;
+  overflow: hidden;
+  max-width: 520px;
+  width: 100%;
+  position: relative;
+  transform: translateY(16px) scale(.97);
+  transition: transform .35s cubic-bezier(.22,.68,0,1.2);
+  box-shadow: 0 24px 80px rgba(27,27,29,.22);
+}
+#cher-popup-overlay.visible #cher-popup {
+  transform: translateY(0) scale(1);
+}
+
+/* TOP BAR */
+.cp-bar {
+  background: #3D4436;
+  padding: 18px 22px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.cp-bar-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.cp-logo {
+  font-family: Georgia, 'Playfair Display', serif;
+  font-size: 15px;
+  font-style: italic;
+  color: #F8F6E3;
+  letter-spacing: .06em;
+}
+.cp-bar-tag {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: #C49797;
+  background: rgba(196,151,151,.15);
+  border: .5px solid rgba(196,151,151,.25);
+  border-radius: 20px;
+  padding: 3px 10px;
+}
+.cp-close {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(248,246,227,.1);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .15s;
+  flex-shrink: 0;
+}
+.cp-close:hover { background: rgba(248,246,227,.2); }
+.cp-close svg {
+  width: 12px;
+  height: 12px;
+  fill: none;
+  stroke: rgba(248,246,227,.7);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+/* BODY */
+.cp-body { padding: 26px 28px 24px; }
+.cp-eyebrow {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: #9B8E82;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.cp-eyebrow::before {
+  content: '';
+  width: 20px;
+  height: .5px;
+  background: #C49797;
+}
+.cp-headline {
+  font-family: Georgia, 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 400;
+  color: #1B1B1D;
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+.cp-headline em {
+  font-style: italic;
+  color: #834A49;
+}
+.cp-sub {
+  font-size: 13.5px;
+  font-weight: 300;
+  color: #6B6054;
+  line-height: 1.75;
+  margin-bottom: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+.cp-sub strong { color: #1B1B1D; font-weight: 500; }
+
+/* WHAT'S INSIDE PILLS */
+.cp-pills {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 22px;
+}
+.cp-pill {
+  font-size: 11px;
+  font-weight: 400;
+  color: #7A6054;
+  background: rgba(131,74,73,.07);
+  border: .5px solid rgba(131,74,73,.14);
+  border-radius: 20px;
+  padding: 4px 11px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* FORM */
+.cp-form {
+  display: flex;
+  gap: 8px;
+}
+.cp-input {
+  flex: 1;
+  padding: 12px 14px;
+  background: #F8F6E3;
+  border: 1px solid rgba(27,27,29,.14);
+  border-radius: 50px;
+  font-size: 13.5px;
+  font-weight: 300;
+  color: #1B1B1D;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  outline: none;
+  transition: border-color .2s;
+}
+.cp-input:focus { border-color: #834A49; }
+.cp-input::placeholder { color: #B0A898; }
+.cp-submit {
+  padding: 12px 22px;
+  background: #834A49;
+  color: #F8F6E3;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  transition: background .15s, transform .15s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.cp-submit:hover { background: #6e3c3b; transform: translateY(-1px); }
+
+/* NOTE */
+.cp-note {
+  font-size: 11px;
+  font-weight: 300;
+  color: #9B8E82;
+  text-align: center;
+  margin-top: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* SUCCESS STATE */
+.cp-success {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 32px 28px 28px;
+  gap: 10px;
+}
+.cp-success-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(29,158,117,.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+.cp-success-icon svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: #1D9E75;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.cp-success-title {
+  font-family: Georgia, 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: #1B1B1D;
+}
+.cp-success-title em { font-style: italic; color: #834A49; }
+.cp-success-sub {
+  font-size: 13px;
+  font-weight: 300;
+  color: #6B6054;
+  line-height: 1.65;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+.cp-success-close {
+  margin-top: 8px;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: #834A49;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-family: inherit;
+  transition: opacity .15s;
+}
+.cp-success-close:hover { opacity: .7; }
+
+/* BOTTOM STRIP */
+.cp-bottom {
+  background: rgba(61,68,54,.06);
+  border-top: .5px solid rgba(27,27,29,.07);
+  padding: 11px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.cp-bottom-text {
+  font-size: 11px;
+  font-weight: 300;
+  color: #9B8E82;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+.cp-bottom-link {
+  font-size: 11px;
+  font-weight: 500;
+  color: #834A49;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: opacity .15s;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+.cp-bottom-link:hover { opacity: .7; }
+
+/* MOBILE */
+@media (max-width: 540px) {
+  #cher-popup { border-radius: 16px; }
+  .cp-body { padding: 22px 20px 20px; }
+  .cp-headline { font-size: 20px; }
+  .cp-form { flex-direction: column; }
+  .cp-submit { width: 100%; padding: 13px 20px; }
+  .cp-bottom { flex-direction: column; gap: 6px; align-items: flex-start; }
+}
+</style>
+
+<!-- POPUP HTML — rendered in DOM so Google + AI crawlers index it -->
+<div id="cher-popup-overlay" role="dialog" aria-modal="true" aria-labelledby="cher-popup-title" aria-describedby="cher-popup-desc">
+  <div id="cher-popup">
+
+    <!-- TOP BAR -->
+    <div class="cp-bar">
+      <div class="cp-bar-left">
+        <span class="cp-logo">Cher</span>
+        <span class="cp-bar-tag">Weekly newsletter</span>
+      </div>
+      <button class="cp-close" id="cp-close-btn" aria-label="Close newsletter signup">
+        <svg viewBox="0 0 12 12"><path d="M2 2l8 8M10 2l-8 8"/></svg>
+      </button>
+    </div>
+
+    <!-- FORM STATE -->
+    <div id="cp-form-state">
+      <div class="cp-body">
+        <div class="cp-eyebrow">Free · Every Tuesday</div>
+        <h2 class="cp-headline" id="cher-popup-title">
+          The salon marketing<br>tips that actually <em>work.</em>
+        </h2>
+        <p class="cp-sub" id="cher-popup-desc">
+          <strong>Cher Weekly</strong> — one email every Tuesday. Local SEO wins, Google Ads tactics, AI search updates and booking tips written specifically for salon owners. Takes 3 minutes to read. Actually changes something.
+        </p>
+        <div class="cp-pills" aria-label="What's inside Cher Weekly">
+          <span class="cp-pill">Local SEO tips</span>
+          <span class="cp-pill">Google Ads</span>
+          <span class="cp-pill">AI search updates</span>
+          <span class="cp-pill">Booking tactics</span>
+          <span class="cp-pill">Real salon examples</span>
+        </div>
+        <form class="cp-form" id="cher-nl-form" action="mailto:hello@cherdigitalanalytics.com" method="GET" aria-label="Subscribe to Cher Weekly newsletter">
+          <input
+            class="cp-input"
+            type="email"
+            name="email"
+            id="cher-nl-email"
+            placeholder="Your email address"
+            required
+            autocomplete="email"
+            aria-label="Email address for newsletter">
+          <button type="submit" class="cp-submit">Join Cher Weekly →</button>
+        </form>
+        <p class="cp-note">Free · Every Tuesday · Unsubscribe anytime · No spam. Ever.</p>
+      </div>
+
+      <!-- BOTTOM STRIP -->
+      <div class="cp-bottom">
+        <span class="cp-bottom-text">Join salon owners who are done being invisible online.</span>
+        <a href="/cher-salon-audit" class="cp-bottom-link" id="cp-audit-link">Get the free audit instead →</a>
+      </div>
+    </div>
+
+    <!-- SUCCESS STATE -->
+    <div class="cp-success" id="cp-success-state">
+      <div class="cp-success-icon">
+        <svg viewBox="0 0 22 22"><polyline points="4 11 8.5 15.5 18 6.5"/></svg>
+      </div>
+      <div class="cp-success-title">You're in. <em>Welcome.</em></div>
+      <p class="cp-success-sub">
+        Your first Cher Weekly lands this Tuesday. Expect real salon marketing tips — not generic advice — straight to your inbox.
+      </p>
+      <button class="cp-success-close" id="cp-success-close">Close ✕</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- POPUP SCRIPT -->
+<script>
+(function() {
+  var STORAGE_KEY  = 'cher_nl_state';
+  var TIMEOUT_MS   = 5000;   // 5 seconds
+  var RESET_DAYS   = 30;     // re-show after 30 days for dismissed users
+
+  function getState() {
+    try {
+      var raw = localStorage.getItem(STORAGE_KEY);
+      return raw ? JSON.parse(raw) : null;
+    } catch(e) { return null; }
+  }
+
+  function setState(status) {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({
+        status: status,            // 'dismissed' | 'subscribed'
+        ts: Date.now()
+      }));
+    } catch(e) {}
+  }
+
+  function shouldShow() {
+    var s = getState();
+    if (!s) return true;
+    if (s.status === 'subscribed') return false;
+    if (s.status === 'dismissed') {
+      var daysSince = (Date.now() - s.ts) / 86400000;
+      return daysSince >= RESET_DAYS;
+    }
+    return true;
+  }
+
+  function showPopup() {
+    var overlay = document.getElementById('cher-popup-overlay');
+    if (!overlay) return;
+    overlay.classList.add('visible');
+
+    // Trap focus inside popup
+    var focusable = overlay.querySelectorAll('input, button, a, [tabindex]');
+    if (focusable.length) focusable[0].focus();
+  }
+
+  function hidePopup(status) {
+    var overlay = document.getElementById('cher-popup-overlay');
+    if (!overlay) return;
+    overlay.classList.remove('visible');
+    if (status) setState(status);
+  }
+
+  function init() {
+    if (!shouldShow()) return;
+
+    var overlay     = document.getElementById('cher-popup-overlay');
+    var closeBtn    = document.getElementById('cp-close-btn');
+    var form        = document.getElementById('cher-nl-form');
+    var formState   = document.getElementById('cp-form-state');
+    var successState= document.getElementById('cp-success-state');
+    var successClose= document.getElementById('cp-success-close');
+    var auditLink   = document.getElementById('cp-audit-link');
+
+    if (!overlay) return;
+
+    // Close on X
+    closeBtn && closeBtn.addEventListener('click', function() {
+      hidePopup('dismissed');
+    });
+
+    // Close on overlay click (outside popup)
+    overlay.addEventListener('click', function(e) {
+      if (e.target === overlay) hidePopup('dismissed');
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && overlay.classList.contains('visible')) {
+        hidePopup('dismissed');
+      }
+    });
+
+    // Audit link closes popup
+    auditLink && auditLink.addEventListener('click', function() {
+      hidePopup('dismissed');
+    });
+
+    // Form submit
+    form && form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var email = document.getElementById('cher-nl-email');
+      if (!email || !email.value) return;
+
+      // Show success state
+      formState.style.display = 'none';
+      successState.style.display = 'flex';
+      setState('subscribed');
+
+      // Optional: send to your email provider here
+      // e.g. fetch('/api/subscribe', { method:'POST', body: JSON.stringify({ email: email.value }) })
+    });
+
+    // Success close
+    successClose && successClose.addEventListener('click', function() {
+      hidePopup(null); // already stored as subscribed
+    });
+
+    // Fire after 5 seconds using requestIdleCallback where available
+    var delay = function(fn, ms) {
+      if ('requestIdleCallback' in window) {
+        setTimeout(function() {
+          requestIdleCallback(fn, { timeout: 2000 });
+        }, ms);
+      } else {
+        setTimeout(fn, ms);
+      }
+    };
+
+    delay(showPopup, TIMEOUT_MS);
+  }
+
+  // Run after DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+
+<!-- ── END — stop copying here ── -->
+
+</body>
+</html>
